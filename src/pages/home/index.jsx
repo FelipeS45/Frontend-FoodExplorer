@@ -1,9 +1,9 @@
-import { Container, Main, Banner } from "./styles";
+import { Container, Cards } from "./styles";
 
 import { Header } from "../../components/header";
 import { Footer } from "../../components/footer";
-
-import background from "../../assets/Background.png"
+import { Card } from "../../components/card";
+import { Banner } from "../../components/banner";
 
 export function Home() {
 
@@ -12,30 +12,45 @@ export function Home() {
 
       <Header/>
 
-      <Main>
+      <Banner/>
 
-        <Banner>
+      <Cards>
 
-          <div className="banner-wrapper">
+        <div className="cards-wrapper">
 
-            <div className="img-wrapper">
+          <span><h1>Refeições</h1></span>
 
-              <img src={background} alt="Imagem de ingredientes" />
+          <div className="meals">
 
-            </div>
-
-            <div className="title">
-                      
-              <h1>Sabores inigualáveis</h1>
-              <p>Sinta o cuidado do preparo com ingredientes selecionados</p>
-                              
-            </div>
+            <Card/>
+            <Card/>
+            <Card/>
 
           </div>
-          
-        </Banner>
 
-      </Main>
+          <h1>Sobremesas</h1>
+
+          <div className="desserts">
+
+            <Card/>
+            <Card/>
+            <Card/>
+
+          </div>
+
+          <h1>Bebidas</h1>
+
+          <div className="drinks">
+
+            <Card/>
+            <Card/>
+            <Card/>           
+
+          </div>
+
+        </div>
+
+      </Cards>
 
       <Footer/>
 

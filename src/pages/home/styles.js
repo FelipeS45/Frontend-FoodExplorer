@@ -1,57 +1,50 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
   min-height: 100vh;
+  min-width: 100vw;
+
+  overflow-x: hidden;
 
   display: grid;
   grid-template-rows: 11.4rem auto 7.7rem;
   grid-template-areas:
     "Header"
-    "Main"
+    "Banner"
+    "Cards"
     "Footer";
 
   color: ${({ theme }) => theme.COLORS.LIGHT_400};
 `
 
-export const Main = styled.div`
-  display: grid;
-  grid-template-rows: 406px auto;
-`
-
 export const Banner = styled.div`
+ 
+`
 
-  padding: 0 12rem;
+export const Cards = styled.div`
+  margin-top: -232px;
 
-  .banner-wrapper {
-    height: 28rem;
+  grid-area: "Cards";
 
-    margin-top: 16rem;
-    padding-right: 10rem;
-
+  .cards-wrapper {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    padding: 0 123px;
+    gap: 32px;
 
-    background: var(--Gradients-200, linear-gradient(180deg, #091E26 0%, #00131C 100%));
-  } 
+    h1:first-child {
+    }
 
-  img {
-    z-index: 1; 
+    .meals, .desserts, .drinks {
+      display: flex;
+      align-items: center;
+      gap: 32px;
 
-    margin-top: -130px;
-    margin-left: -68px;
-
-    height: 416px;
-    width: 632px;
-  }
-
-  .title {
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    color: ${({ theme }) => theme.COLORS.LIGHT_300};
-
-    text-align: center;
+      margin: -92px 0 -50px 0;
+    } 
   }
 `
+
+
+
