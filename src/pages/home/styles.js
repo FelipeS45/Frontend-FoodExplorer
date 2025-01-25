@@ -15,11 +15,27 @@ export const Container = styled.div`
     "Cards"
     "Footer";
 
-  color: ${({ theme }) => theme.COLORS.LIGHT_400};
-`
+  color: ${({theme}) => theme.COLORS.LIGHT_400};
 
-export const Banner = styled.div`
- 
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: ${({theme}) => theme.COLORS.DARK_100};
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${({theme}) => theme.COLORS.LIGHT_400};
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: ${({theme}) => theme.COLORS.LIGHT_300};
+  }
 `
 
 export const Cards = styled.div`
