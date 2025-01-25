@@ -4,7 +4,7 @@ export const Container = styled.div`
 `
 
 export const Main = styled.div`
-  padding: 24px 121px 0 121px;
+  padding: 36px 121px 0 121px;
 
   .gobackbutton-wrapper {
     display: flex;
@@ -65,7 +65,7 @@ export const Content = styled.div`
     .insert-ingredients {
       flex-wrap: wrap;
 
-      max-width: 540px;
+      max-width: 1460px;
 
       border: none;
       border-radius: 5px;

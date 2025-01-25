@@ -65,7 +65,7 @@ export const Content = styled.div`
     .insert-ingredients {
       flex-wrap: wrap;
 
-      max-width: 540px;
+      max-width: 1460px;
 
       border: none;
       border-radius: 5px;

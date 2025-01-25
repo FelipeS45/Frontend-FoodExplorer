@@ -104,7 +104,7 @@ export function EditDish() {
 
           <Button className = "delete-dish" title = "Excluir prato"/>
 
-          <Button title = "Salvar alterações"/>
+          <Button className = "save-dish" title = "Salvar alterações"/>
 
         </div>
 
