@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.button`
+    flex-wrap: wrap;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 100%;
-    height: 4.8rem;
-    padding: 1.2rem 3.2rem;
+    height: 48px;
+    padding: 12px 32px;
 
     border-radius: 5px;    
     border: none;

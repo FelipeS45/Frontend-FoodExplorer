@@ -1,4 +1,4 @@
-import { Container, Profile } from "./styles";
+import { Container, NewDishButton, Profile } from "./styles";
 
 import { Input } from "../input";
 import { Button } from "../button";
@@ -26,7 +26,9 @@ export function Header(){
         icon = {FiSearch}
       />
 
-      <Button title={"Pedidos"}/>
+      <NewDishButton to = "/newdish">Novo Prato</NewDishButton>
+
+      <Button title = "Pedidos"></Button>
 
       <Profile>
 

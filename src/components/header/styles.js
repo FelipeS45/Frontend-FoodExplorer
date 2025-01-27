@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { Link } from 'react-router-dom';
+
 export const Container = styled.div`
   padding: 24px 123px;
 
@@ -32,6 +34,25 @@ export const Container = styled.div`
     width: 216px;
     height: 56px;
   }
+`
+
+export const NewDishButton = styled(Link)`
+  display: flex;
+  align-items: center;
+
+  white-space: nowrap;
+
+  min-height: 55px;
+  padding: 12px 32px;
+
+  border-radius: 5px;    
+  border: none;
+    
+  font-weight: 500;
+  color: ${({ theme }) => theme.COLORS.LIGHT_100};
+
+  background-color: ${({ theme }) => theme.COLORS.RED_100};
+
 `
 
 export const Profile = styled.div`

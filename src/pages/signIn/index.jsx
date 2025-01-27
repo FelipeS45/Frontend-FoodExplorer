@@ -1,11 +1,25 @@
 import {Container, Logo, Form} from "./styles";
 
+import { Link } from "react-router-dom";
+import { useState } from "react";
+
 import { FiMail, FiLock } from "react-icons/fi";
+
+import { useAuth } from "../../hooks/auth";
 
 import { Button } from "../../components/button";
 import { Input } from "../../components/input";
 
 export function SignIn() {
+
+  const [email, setEmail] = useState("") // ("") -> começa vazio
+  const [password, setPassword] = useState("")
+
+  const {signIn} = useAuth();
+
+  function handleSignIn(){
+    signIn({email, password})
+  }
 
   return(
     <Container>
@@ -34,6 +48,7 @@ export function SignIn() {
             placeholder = "E-mail"
             type = "text"
             icon = {FiMail}
+            onChange = {ev => setEmail(ev.target.value)}
           />
 
         </div>
@@ -44,13 +59,14 @@ export function SignIn() {
             placeholder = "Senha"
             type = "password"
             icon = {FiLock}
+            onChange = {ev => setPassword(ev.target.value)}
           />
 
         </div>
 
-        <Button title = "Entrar"/>
+        <Button title = "Entrar" onClick = {handleSignIn}/>
 
-        <a href="#">Criar conta</a>
+        <Link to = "/register">Criar conta</Link>
 
       </Form>
 

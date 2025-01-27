@@ -1,10 +1,9 @@
-import { Container, Main, Content } from "./styles"
+import { Container, Main, BackToHome, Content } from "./styles"
 
 import { Header } from "../../components/header"
 import { Footer } from "../../components/footer"
 import { Button } from "../../components/button";
 import { Ingredients } from "../../components/ingredients";
-import { ButtonText } from "../../components/buttonText";
 import PlateImg from "../../assets/Plate1.png"
 
 import { PiCaretLeft } from "react-icons/pi";
@@ -22,7 +21,7 @@ export function Dish() {
           <div className="gobackbutton-wrapper">
 
             <PiCaretLeft/>
-            <ButtonText title = "Voltar"/>
+            <BackToHome to = "/">Voltar</BackToHome>
 
           </div>
 

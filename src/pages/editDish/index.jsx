@@ -1,4 +1,4 @@
-import { Container, Main, Content } from "./styles";
+import { Container, Main, BackToHome, Content } from "./styles";
 
 import { Header } from "../../components/header";
 import { Footer } from "../../components/footer";
@@ -22,7 +22,7 @@ export function EditDish() {
         <div className="gobackbutton-wrapper">
         
           <PiCaretLeft/>
-          <ButtonText title = "Voltar"/>
+          <BackToHome to = "/">Voltar</BackToHome>
         
         </div>
 

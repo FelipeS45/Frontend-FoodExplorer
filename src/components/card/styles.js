@@ -1,5 +1,7 @@
 import styled from "styled-components"
 
+import { Link } from 'react-router-dom';
+
 export const Container = styled.div`
 
   height: 422px;
@@ -18,8 +20,8 @@ export const Container = styled.div`
     margin-bottom: 12px;
     margin-left: 38px;
 
-    .favorites-wrapper button, .edit-wrapper button {
-      font-size: 24px;
+    .favorites-wrapper button {
+      font-size: 28px;
 
       background: ${({theme}) => theme.COLORS.DARK_200};
       color: ${({theme}) => theme.COLORS.LIGHT_400};
@@ -66,5 +68,12 @@ export const Container = styled.div`
 
     border: none;
   }
+`
+
+export const DishView = styled(Link)``
+
+export const ButtonToEditDish = styled(Link)`
+  font-size: 28px;
+  color: ${({theme}) => theme.COLORS.LIGHT_400};
 `
 

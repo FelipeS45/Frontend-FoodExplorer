@@ -39,7 +39,7 @@ export const Container = styled.div`
 `
 
 export const Cards = styled.div`
-  margin-top: -232px;
+  margin-top: -142px;
 
   grid-area: "Cards";
 
@@ -49,10 +49,8 @@ export const Cards = styled.div`
     padding: 0 123px;
     gap: 32px;
 
-    h1:first-child {
-    }
-
     .meals, .desserts, .drinks {
+      flex-wrap: wrap; // VER DEPOIS ******
       display: flex;
       align-items: center;
       gap: 32px;

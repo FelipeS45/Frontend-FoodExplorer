@@ -1,4 +1,6 @@
-import { Container } from "./styles"
+import { Container, DishView, ButtonToEditDish } from "./styles"
+
+import { Link } from 'react-router-dom';
 
 import { Button } from "../button"
 
@@ -15,14 +17,18 @@ export function Card() {
 
     <div className="icons-wrapper">
 
-      <img src= {Plate1} alt="Imagem do prato" /> 
+      <DishView to = "/dish/:id">
+
+        <img src= {Plate1} alt="Imagem do prato" /> 
+
+      </DishView>
 
       <div className="favorites-wrapper">
        <button><FiHeart/></button>
       </div>
 
       <div className="edit-wrapper">
-       <button><TfiPencil/></button>
+       <ButtonToEditDish to = "/editdish"><TfiPencil/></ButtonToEditDish>
       </div>
 
     </div>

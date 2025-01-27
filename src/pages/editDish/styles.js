@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { Link } from 'react-router-dom';
+
 export const Container = styled.div`
 `
 
@@ -13,6 +15,10 @@ export const Main = styled.div`
 
     margin-bottom: 32px;
   }
+`
+
+export const BackToHome = styled(Link)`
+  color: ${({ theme }) => theme.COLORS.LIGHT_100};
 `
 
 export const Content = styled.div`

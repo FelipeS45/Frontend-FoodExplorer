@@ -1,4 +1,6 @@
-import { Container, Main, Content } from "./styled";
+import { Container, Main, BackToHome, Content } from "./styled";
+
+import { Link } from "react-router-dom";
 
 import { Header } from "../../components/header";
 import { Footer } from "../../components/footer";
@@ -22,7 +24,7 @@ export function NewDish() {
         <div className="gobackbutton-wrapper">
         
           <PiCaretLeft/>
-          <ButtonText title = "Voltar"/>
+          <BackToHome to = "/">Voltar</BackToHome>
         
         </div>
 
