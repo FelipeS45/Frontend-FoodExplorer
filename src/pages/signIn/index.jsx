@@ -1,14 +1,14 @@
 import {Container, Logo, Form} from "./styles";
 
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Button } from "../../components/button";
+import { Input } from "../../components/input";
 
 import { FiMail, FiLock } from "react-icons/fi";
 
 import { useAuth } from "../../hooks/auth";
 
-import { Button } from "../../components/button";
-import { Input } from "../../components/input";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export function SignIn() {
 

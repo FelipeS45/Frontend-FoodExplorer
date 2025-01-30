@@ -1,63 +1,71 @@
-import { Container, DishView, ButtonToEditDish } from "./styles"
+import { Container, DishView, ButtonToEditDish } from "./styles";
 
-import { Link } from 'react-router-dom';
+import { Button } from "../button";
 
-import { Button } from "../button"
+import Logo from "../../assets/Polygon1.png";
 
-import Plate1 from "../../assets/Plate1.png"
-
-import { FiHeart } from "react-icons/fi";
+import { FiHeart, FiMinus, FiPlus } from "react-icons/fi";
 import { TfiPencil } from "react-icons/tfi";
-import { FiMinus, FiPlus } from "react-icons/fi";
 
-export function Card() {
+import { useState } from "react";
 
- return(
-  <Container>
+import { api } from "../../services/api";
 
-    <div className="icons-wrapper">
+export function Card({ data, ...rest }) {
+  const [quantity, setQuantity] = useState(1);
 
-      <DishView to = "/dish/:id">
+  const dishImageURL = data.image ? `${api.defaults.baseURL}/files/${data.image}` : Logo;
 
-        <img src= {Plate1} alt="Imagem do prato" /> 
+  function decreaseQuantity() {
+    setQuantity((prevQuantity) => Math.max(1, prevQuantity - 1));
+  }
 
-      </DishView>
+  function increaseQuantity() {
+    setQuantity((prevQuantity) => Math.min(10, prevQuantity + 1));
+  }
 
-      <div className="favorites-wrapper">
-       <button><FiHeart/></button>
+  return (
+    <Container>
+      <div className="icons-wrapper">
+        <DishView to={`/dish/${data.id}`}>
+          <img src={dishImageURL} alt="Imagem do prato" />
+        </DishView>
+
+        <div className="favorites-wrapper">
+          <button><FiHeart /></button>
+        </div>
+
+        <div className="edit-wrapper">
+          <ButtonToEditDish to={`/editdish/${data.id}`}><TfiPencil /></ButtonToEditDish>
+        </div>
       </div>
 
-      <div className="edit-wrapper">
-       <ButtonToEditDish to = "/editdish"><TfiPencil/></ButtonToEditDish>
+      <div className="content-wrapper">
+        <h1>{data.name}</h1>
+        <p>{data.description}</p>
+        <h2>R$ {data.price}</h2>
       </div>
 
-    </div>
+      <div className="footer-wrapper">
 
-    <div className="header-wrapper">
+        <div className="quantity-control">
 
-      <h1>Prato</h1>
-      <p>dpandawd padadwd awidawhd awjdpadajdawpdjawjd</p>
+          <button onClick={decreaseQuantity} disabled={quantity === 1}>
+            <FiMinus />
+          </button>
 
-    </div>
+          <span>{String(quantity).padStart(2, "0")}</span>
 
-    <div className="footer-wrapper">
+          <button onClick={increaseQuantity} disabled={quantity === 10}>
+            <FiPlus />
+          </button>
 
-      <div className="quantity-control">
+        </div>
 
-        <button><FiMinus/></button>
-        <span>01</span>
-        <button><FiPlus/></button>
-
+        <div className="button">
+          <Button title="Adicionar" />
+        </div>
       </div>
-
-      <div className="button">
-
-        <Button title = "Adicionar"/>
-
-      </div>
-
-    </div>  
-
-  </Container>
- )
+    </Container>
+  );
 }

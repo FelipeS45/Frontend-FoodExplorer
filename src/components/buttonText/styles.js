@@ -3,7 +3,10 @@ import styled from "styled-components";
 export const Container = styled.button`
   background: none;
 
-  font-size: 18px;
+  display: flex;
+  align-items: center;
+
+  font-size: 20px;
   color: ${({theme}) => theme.COLORS.LIGHT_100};
   
   border: none;

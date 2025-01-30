@@ -52,14 +52,12 @@ export const NewDishButton = styled(Link)`
   color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
   background-color: ${({ theme }) => theme.COLORS.RED_100};
-
 `
 
-export const Profile = styled.div`
+export const ProfileView = styled(Link)`
   >img{
     width: 55px;
     height: 55px;
     border-radius: 50%;
   }
-
 `

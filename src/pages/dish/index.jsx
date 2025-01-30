@@ -1,83 +1,100 @@
-import { Container, Main, BackToHome, Content } from "./styles"
+import { Container, Main, Content } from "./styles";
 
-import { Header } from "../../components/header"
-import { Footer } from "../../components/footer"
+import { Header } from "../../components/header";
+import { Footer } from "../../components/footer";
 import { Button } from "../../components/button";
 import { Ingredients } from "../../components/ingredients";
-import PlateImg from "../../assets/Plate1.png"
+import { ButtonText } from "../../components/buttonText";
 
-import { PiCaretLeft } from "react-icons/pi";
-import { FiMinus, FiPlus } from "react-icons/fi";
+import { FiArrowLeft, FiMinus, FiPlus } from "react-icons/fi";
+
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+
+import { api } from "../../services/api";
 
 export function Dish() {
-  
-  return(
+  const params = useParams();
+  const navigate = useNavigate();
+
+  const [data, setData] = useState(null);
+  const [quantity, setQuantity] = useState(1); // Estado para a quantidade
+
+  useEffect(() => {
+    async function fetchDish() {
+      try {
+        const response = await api.get(`/dishes/${params.id}`);
+        setData(response.data);
+      } catch (error) {
+        console.error("Erro ao buscar prato:", error);
+      }
+    }
+    fetchDish();
+  }, [params.id]);
+
+  const dishImageURL = data ? `${api.defaults.baseURL}/files/${data.image}` : "";
+
+  function editDish() {
+    navigate(`/editdish/${data.id}`);
+  }
+
+  function decreaseQuantity() {
+    setQuantity((prevQuantity) => Math.max(1, prevQuantity - 1));
+  }
+
+  function increaseQuantity() {
+    setQuantity((prevQuantity) => Math.min(10, prevQuantity + 1));
+  }
+
+  function handleBack() {
+    navigate(-1)
+  }
+
+  return (
     <Container>
 
-      <Header/>
+      <Header />
 
-        <Main>
+      <Main>
 
-          <div className="gobackbutton-wrapper">
+        <div className="gobackbutton-wrapper">
+          <FiArrowLeft/>
+          <ButtonText title = "Voltar" onClick = {handleBack}/>
+        </div>
 
-            <PiCaretLeft/>
-            <BackToHome to = "/">Voltar</BackToHome>
+        <Content>
+
+          <div className="plateimg-wrapper">
+            <img src={dishImageURL} alt="Imagem do prato escolhido" />
+          </div>
+
+          <div className="content-wrapper">
+
+            <h1>{data?.name}</h1>
+            <p>{data?.description}</p>
+
+            <div className="ingredients-wrapper">
+              {data?.ingredients?.map((ingredient) => (
+                <Ingredients key={String(ingredient.id)} name={ingredient.name} />
+              ))}
+            </div>
+
+            <div className="interactions-wrapper">
+
+              <div className="admin-only">
+                <Button title="Editar prato" onClick={editDish} />
+              </div>
+
+            </div>
 
           </div>
 
-          <Content>
+        </Content>
 
-            <div className="plateimg-wrapper">
+      </Main>
 
-              <img src = {PlateImg} alt="Imagem do prato escolhido"/>
-
-            </div>
-
-            <div className="content-wrapper">
-
-              <h1>Prato</h1>
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo praesentium facere delectus error omnis aspernatur provident quod, amet aliquid cupiditate et nostrum, repellat illo numquam doloribus dolores enim odit cum!</p>
-
-              <div className="ingredients-wrapper">
-
-                <Ingredients name = "Batata"/>
-                <Ingredients name = "Polvilho"/>
-                <Ingredients name = "Sal"/>
-
-              </div>
-
-              <div className="interactions-wrapper">
-
-                <div className="admin-only">
-
-                  <Button className = "editPlate" title = "Editar Prato"/>
-
-                </div>
-
-                <div className="customer-only">
-
-                  <div className="quantity-control">
-                
-                    <button><FiMinus/></button>
-                    <span>01</span>
-                    <button><FiPlus/></button>
-              
-                  </div>
-
-                  <Button className = "includePlate" title = "Incluir"/>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </Content>
-
-        </Main>
-
-      <Footer/>
-
+      <Footer />
+      
     </Container>
-  )
+  );
 }

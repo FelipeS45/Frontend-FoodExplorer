@@ -3,12 +3,12 @@ import styled from "styled-components"
 import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
-
-  height: 422px;
+  min-height: 452px;
   width: 304px;
 
-  margin: 100px 0;
   padding: 24px;
+
+  margin-bottom: 72px;
 
   border-radius: 8px;
   border: 1px solid ${({theme}) => theme.COLORS.DARK_300};
@@ -36,12 +36,18 @@ export const Container = styled.div`
     justify-content: center;
   }
 
-  .header-wrapper {
+  .content-wrapper {
     margin: 15px 0;
     text-align: center;
 
     p {
       margin-top: 15px;
+    }
+
+    h2 {
+      margin-top: 15px;
+
+      color: ${({theme}) => theme.COLORS.BLUE_200};
     }
   }
 
@@ -49,24 +55,31 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    margin-top: 36px;
-  }  
-
-  .quantity-control{
-    display: flex;
     gap: 10px;
 
-    font-size: 24px;
-  }
+    margin-top: 24px;
+  }  
 
-  .quantity-control button{
+  .quantity-control {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+
+    font-size: 24px;
+
+    color: ${({theme}) => theme.COLORS.LIGHT_100};
     background: ${({theme}) => theme.COLORS.DARK_200};
 
-    font-size: 24px;
-    color: ${({theme}) => theme.COLORS.LIGHT_400};
-
+    button {
+    background: ${({theme}) => theme.COLORS.DARK_400};
     border: none;
+
+    font-size: 20px;
+    color: ${({theme}) => theme.COLORS.LIGHT_100};
+
+    display: flex;
+    align-items: center;
+    }
   }
 `
 

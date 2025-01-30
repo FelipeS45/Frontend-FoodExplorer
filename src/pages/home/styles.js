@@ -1,22 +1,16 @@
 import styled from "styled-components";
 
+import { Link } from 'react-router-dom';
+
 export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+
   width: 100%;
-  min-height: 100vh;
-  min-width: 100vw;
+  height: 100vh;
+  width: 100vw;
 
   overflow-x: hidden;
-
-  display: grid;
-  grid-template-rows: 11.4rem auto 7.7rem;
-  grid-template-areas:
-    "Header"
-    "Banner"
-    "Cards"
-    "Footer";
-
-  color: ${({theme}) => theme.COLORS.LIGHT_400};
-
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
@@ -36,29 +30,101 @@ export const Container = styled.div`
   &::-webkit-scrollbar-thumb:hover {
     background: ${({theme}) => theme.COLORS.LIGHT_300};
   }
+
+  color: ${({theme}) => theme.COLORS.LIGHT_400};
+`
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  margin-bottom: 48px;
 `
 
 export const Cards = styled.div`
-  margin-top: -142px;
+  margin-top: 54px;
 
-  grid-area: "Cards";
+  padding: 0px 120px;
 
-  .cards-wrapper {
+  .section-dishes, .section-desserts, .section-drinks {
+    margin-bottom: 32px;
+
+    font-size: 42px;
+    font-weight: 400;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .dishes-wrapper, .desserts-wrapper, .drinks-wrapper {
     display: flex;
-    flex-direction: column;
-    padding: 0 123px;
+    align-items: center;
     gap: 32px;
-
-    .meals, .desserts, .drinks {
-      flex-wrap: wrap; // VER DEPOIS ******
-      display: flex;
-      align-items: center;
-      gap: 32px;
-
-      margin: -92px 0 -50px 0;
-    } 
+    flex-wrap: wrap;
+    place-content: center;
   }
 `
 
+export const Header = styled.div`
+padding: 24px 123px;
+
+max-width: 100vw;
+
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+gap: 3.2rem;
+
+background-color: ${({theme}) => theme.COLORS.DARK_600};
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.9rem;
+}
+
+svg {
+  height: 3rem;
+  width: 3rem;
+}
+
+h1 {
+  font-size: 2.4rem;
+}
+
+button {
+  width: 216px;
+  height: 56px;
+}
+
+`
+
+
+export const NewDishButton = styled(Link)`
+  display: flex;
+  align-items: center;
+
+  white-space: nowrap;
+
+  min-height: 55px;
+  padding: 12px 32px;
+
+  border-radius: 5px;    
+  border: none;
+    
+  font-weight: 500;
+  color: ${({ theme }) => theme.COLORS.LIGHT_100};
+
+  background-color: ${({ theme }) => theme.COLORS.RED_100};
+`
+
+export const ProfileView = styled(Link)`
+  >img{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+  }
+
+`
 
 

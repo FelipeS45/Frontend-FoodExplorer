@@ -41,13 +41,15 @@ export const Content = styled.div`
   }
 
   .ingredients-wrapper {
-    margin-top: 36px;
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 10px;
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 18px;
+    padding: 12px 16px;
+
+    margin-top: 24px;
   }
+
 
   .interactions-wrapper {
     display: flex;

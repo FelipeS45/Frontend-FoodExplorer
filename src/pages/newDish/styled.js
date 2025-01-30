@@ -21,6 +21,36 @@ export const BackToHome = styled(Link)`
   color: ${({ theme }) => theme.COLORS.LIGHT_100};
 `
 
+export const Image = styled.div`
+
+  .image-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 14px;
+    border-radius: 5px; /* Arredonda as bordas */
+  }
+
+  .upload-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 16px;
+    background-color: ${({ theme }) => theme.COLORS.DARK_900};
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .upload-button:hover {
+    background-color: ${({ theme }) => theme.COLORS.DARK_800};
+  }
+
+  .image-upload input {
+    display: none;
+  }
+`
+
 export const Content = styled.div`
   padding: 0 121px 121px;
 
@@ -33,7 +63,7 @@ export const Content = styled.div`
       max-width: 230px;
     }
 
-    .input-wrapper {
+    .inputimage-wrapper {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -55,7 +85,39 @@ export const Content = styled.div`
     }
 
     .category-wrapper {
-      max-width: 230px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      padding: 12px 14px;
+
+      border-radius: 5px; 
+    }
+
+    .category-wrapper p {
+      font-size: 16px;
+      color: ${({ theme }) => theme.COLORS.LIGHT_100};
+    }
+
+    .category-wrapper select {
+      display: flex;
+      gap: 8px;
+
+      padding: 14px 18px;
+
+      background-color: ${({ theme }) => theme.COLORS.DARK_900};
+
+      border: none;
+      border-radius: 5px;
+
+      color: ${({ theme }) => theme.COLORS.LIGHT_100};
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .category-wrapper select:hover {
+      background-color: ${({ theme }) => theme.COLORS.DARK_800};
     }
   }
 

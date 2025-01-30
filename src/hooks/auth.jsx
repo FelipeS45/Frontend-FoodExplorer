@@ -1,5 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
+import { useNavigate } from "react-router-dom";
+
 import { api } from "../services/api";
 
 export const AuthContext = createContext({})
@@ -33,7 +35,7 @@ function AuthProvider({children}){
     }
   }
 
-  function signOut(){ // remover as informações armazenadas no localStorage
+  function signOut(){ // remover as informações do usuário armazenadas no localStorage
     localStorage.removeItem("@foodexplorer: user")
     localStorage.removeItem("@foodexplorer: token")
 
@@ -72,7 +74,7 @@ function AuthProvider({children}){
     }
   }
 
-  useEffect(() => { // dizer ao React o que deve ser feito depois da renderização (renderização - atualizar a DOM)
+  useEffect(() => { // dizer ao React o que deve ser feito depois da renderização (renderização -> atualizar a DOM)
     const user = localStorage.getItem("@foodexplorer: user")
     const token = localStorage.getItem("@foodexplorer: token")
 

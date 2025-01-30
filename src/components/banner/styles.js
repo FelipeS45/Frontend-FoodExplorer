@@ -19,7 +19,7 @@ export const Container = styled.div`
 
   img {
     z-index: 1; 
-    margin-top: -130px;
+    margin-top: -132px;
     margin-left: -68px;
     height: 416px;
     width: 632px;

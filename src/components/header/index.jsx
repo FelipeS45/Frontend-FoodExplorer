@@ -1,11 +1,18 @@
-import { Container, NewDishButton, Profile } from "./styles";
+import { Container, NewDishButton, ProfileView } from "./styles";
 
 import { Input } from "../input";
-import { Button } from "../button";
 
 import { FiSearch } from "react-icons/fi";
 
+import { useAuth } from "../../hooks/auth";
+
+import { api } from "../../services/api";
+
 export function Header(){
+
+  const {user} = useAuth()
+
+  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : ""
 
   return(
     <Container>
@@ -21,20 +28,18 @@ export function Header(){
       </div>
 
       <Input
-        placeholder = "Busque por pratos ou ingredientes"
+        placeholder = "Busque por pratos"
         type = "text"
         icon = {FiSearch}
       />
 
       <NewDishButton to = "/newdish">Novo Prato</NewDishButton>
 
-      <Button title = "Pedidos"></Button>
-
-      <Profile>
-
-        <img src="https://github.com/FelipeS45.png" alt="Foto do usuário"/>
-
-      </Profile>
+      <ProfileView to = "/profile">
+              
+        <img src = {avatarUrl} alt="Foto do usuário"/>
+              
+      </ProfileView>
 
     </Container>  
   )

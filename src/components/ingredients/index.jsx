@@ -5,7 +5,7 @@ export function Ingredients({name}) {
   return(
     <Container>
 
-      {name}
+      <p>{name}</p>
 
     </Container>
   )
