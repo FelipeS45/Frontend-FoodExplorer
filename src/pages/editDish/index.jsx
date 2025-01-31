@@ -33,8 +33,6 @@ export function EditDish() {
 
   const navigate = useNavigate()
 
-  const dishImageURL = data && `${api.defaults.baseURL}/files/${data.image}`
-
   function handleChangeDishImage(ev) {
     const image = ev.target.files[0]
     setImageFile(image)
@@ -162,7 +160,7 @@ export function EditDish() {
                 <input
                   type="file"
                   id="image"
-                  onChange={(ev) => setImage(ev.target.files[0])}
+                  onChange={handleChangeDishImage}
                 />
 
               </div>

@@ -11,22 +11,29 @@ import { useState } from "react";
 
 import { api } from "../../services/api";
 
-export function Card({ data, ...rest }) {
-  const [quantity, setQuantity] = useState(1);
+export function Card({ data, onAdd, ...rest }) {
+  const [quantity, setQuantity] = useState(1)
 
-  const dishImageURL = data.image ? `${api.defaults.baseURL}/files/${data.image}` : Logo;
+  const dishImageURL = data.image ? `${api.defaults.baseURL}/files/${data.image}` : Logo
 
   function decreaseQuantity() {
-    setQuantity((prevQuantity) => Math.max(1, prevQuantity - 1));
+    setQuantity((prevQuantity) => Math.max(1, prevQuantity - 1))
   }
 
   function increaseQuantity() {
-    setQuantity((prevQuantity) => Math.min(10, prevQuantity + 1));
+    setQuantity((prevQuantity) => Math.min(10, prevQuantity + 1))
+  }
+
+  function handleAdd() {
+    onAdd(data.id, quantity)  
   }
 
   return (
+
     <Container>
+
       <div className="icons-wrapper">
+
         <DishView to={`/dish/${data.id}`}>
           <img src={dishImageURL} alt="Imagem do prato" />
         </DishView>
@@ -38,12 +45,15 @@ export function Card({ data, ...rest }) {
         <div className="edit-wrapper">
           <ButtonToEditDish to={`/editdish/${data.id}`}><TfiPencil /></ButtonToEditDish>
         </div>
+
       </div>
 
       <div className="content-wrapper">
+
         <h1>{data.name}</h1>
         <p>{data.description}</p>
         <h2>R$ {data.price}</h2>
+
       </div>
 
       <div className="footer-wrapper">
@@ -63,9 +73,11 @@ export function Card({ data, ...rest }) {
         </div>
 
         <div className="button">
-          <Button title="Adicionar" />
+          <Button title="Adicionar" onClick={handleAdd} />
         </div>
+
       </div>
+
     </Container>
-  );
+  )
 }

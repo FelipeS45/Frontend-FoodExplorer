@@ -8,7 +8,7 @@ import { TextArea } from "../../components/textarea";
 import { ButtonText } from "../../components/buttonText";
 import { Button } from "../../components/button";
 
-import { FiArrowLeft, FiUpload, FiArrowDown } from "react-icons/fi";
+import { FiArrowLeft, FiUpload } from "react-icons/fi";
 
 import { useAuth } from "../../hooks/auth"
 
@@ -19,26 +19,24 @@ import { api } from "../../services/api";
 
 export function NewDish() {
 
-  const [image, setImage] = useState(null);
-  const [name, setName] = useState("");
-  const [category, setCategory] = useState("");
-  const [price, setPrice] = useState("");
-  const [description, setDescription] = useState("");
+  const [image, setImage] = useState(null)
+  const [name, setName] = useState("")
+  const [category, setCategory] = useState("")
+  const [price, setPrice] = useState("")
+  const [description, setDescription] = useState("")
 
-  const [ingredients, setIngredients] = useState([]);
-  const [newIngredient, setNewIngredient] = useState("");
-
-  const {user} = useAuth()
+  const [ingredients, setIngredients] = useState([])
+  const [newIngredient, setNewIngredient] = useState("")
 
   const navigate = useNavigate()
 
   function handleNewIngredient() {
-    setIngredients(prevState => [...prevState, newIngredient]);
-    setNewIngredient("");
+    setIngredients(prevState => [...prevState, newIngredient])
+    setNewIngredient("")
   }
 
   function handleRemoveIngredient(removed){
-    setIngredients(prevState => prevState.filter(ingredient => ingredient !== removed));
+    setIngredients(prevState => prevState.filter(ingredient => ingredient !== removed))
   }
 
   async function handleNewDish() {
@@ -63,9 +61,10 @@ export function NewDish() {
       .then(alert("Prato adicionado com sucesso!"), navigate("/"))
       .catch((error) => {
         if (error.response) {
-          alert(error.response.data.message);
+          alert(error.response.data.message)
+          
         } else {
-          alert("Erro ao criar o prato!");
+          alert("Erro ao criar o prato!")
         }
       }); 
   }

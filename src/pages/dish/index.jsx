@@ -14,36 +14,29 @@ import { useNavigate, useParams } from "react-router-dom";
 import { api } from "../../services/api";
 
 export function Dish() {
-  const params = useParams();
-  const navigate = useNavigate();
 
-  const [data, setData] = useState(null);
-  const [quantity, setQuantity] = useState(1); // Estado para a quantidade
+  const params = useParams()
+  const navigate = useNavigate()
+
+  const [data, setData] = useState(null)
+  const [quantity, setQuantity] = useState(1) // Estado para a quantidade
 
   useEffect(() => {
     async function fetchDish() {
       try {
-        const response = await api.get(`/dishes/${params.id}`);
-        setData(response.data);
+        const response = await api.get(`/dishes/${params.id}`)
+        setData(response.data)
       } catch (error) {
-        console.error("Erro ao buscar prato:", error);
+        console.error("Erro ao buscar prato:", error)
       }
     }
     fetchDish();
-  }, [params.id]);
+  }, [params.id])
 
-  const dishImageURL = data ? `${api.defaults.baseURL}/files/${data.image}` : "";
+  const dishImageURL = data ? `${api.defaults.baseURL}/files/${data.image}` : ""
 
   function editDish() {
-    navigate(`/editdish/${data.id}`);
-  }
-
-  function decreaseQuantity() {
-    setQuantity((prevQuantity) => Math.max(1, prevQuantity - 1));
-  }
-
-  function increaseQuantity() {
-    setQuantity((prevQuantity) => Math.min(10, prevQuantity + 1));
+    navigate(`/editdish/${data.id}`)
   }
 
   function handleBack() {
@@ -74,9 +67,16 @@ export function Dish() {
             <p>{data?.description}</p>
 
             <div className="ingredients-wrapper">
-              {data?.ingredients?.map((ingredient) => (
-                <Ingredients key={String(ingredient.id)} name={ingredient.name} />
-              ))}
+              
+              {
+                data?.ingredients?.map((ingredient) => (
+                  <Ingredients 
+                    key={String(ingredient.id)} 
+                    name={ingredient.name} 
+                  />
+                ))
+              }
+
             </div>
 
             <div className="interactions-wrapper">

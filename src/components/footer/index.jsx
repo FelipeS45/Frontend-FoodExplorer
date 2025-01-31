@@ -1,10 +1,5 @@
 import { Container } from "./styles";
 
-import { Input } from "../input";
-import { Button } from "../button";
-
-import { FiSearch } from "react-icons/fi";
-
 export function Footer(){
 
   return(
@@ -20,7 +15,7 @@ export function Footer(){
       
       </div>
 
-      <p>© 2023 - Todos os direitos reservados.</p>
+      <p>© 2025 - Todos os direitos reservados.</p>
 
     </Container>  
   )
