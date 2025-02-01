@@ -1,5 +1,8 @@
 import styled from "styled-components";
+
 import { Link } from 'react-router-dom';
+
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
   display: flex;
@@ -29,6 +32,11 @@ export const Container = styled.div`
   }
 
   color: ${({ theme }) => theme.COLORS.LIGHT_400};
+`
+
+export const FiMenu = styled.div`
+  width: 24px;
+  height: 24px;
 `
 
 export const Header = styled.div`
@@ -127,5 +135,10 @@ export const Cards = styled.div`
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
     width: 14px;
     height: 14px;
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    padding: 0 35px;
+    margin-bottom: 32px;
   }
 `

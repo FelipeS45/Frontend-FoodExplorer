@@ -3,6 +3,7 @@ import { Container, Content, Form, Avatar } from "./styles";
 import { Input } from "../../components/input";
 import { Button } from "../../components/button";
 import { ButtonText } from "../../components/buttonText";
+import { Footer } from "../../components/footer";
 
 import { FiArrowLeft, FiUser, FiMail, FiLock, FiCamera } from "react-icons/fi";
 
@@ -12,6 +13,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { api } from "../../services/api"
+import { Main } from "../newDish/styled";
 
 export function Profile(){
 
@@ -67,79 +69,81 @@ export function Profile(){
 
       <Content>
 
-        <ButtonText 
-          title = "Voltar"
-          icon = {FiArrowLeft}   
-          onClick = {handleBack}       
-        />
-
         <Form>
 
-        <Avatar>
-
-          <img 
-            src = {avatarUrl} 
-            alt="Foto do usuário"
+          <ButtonText 
+            title = "Voltar"
+            icon = {FiArrowLeft}   
+            onClick = {handleBack}       
           />
 
-          <label htmlFor = "avatar">
+          <Avatar>
 
-            <FiCamera/>
-
-            <input 
-              id = "avatar" 
-              type = "file"
-              onChange = {handleChangeAvatar}
+            <img 
+              src = {avatarUrl} 
+              alt="Foto do usuário"
             />
 
-          </label>
+            <label htmlFor = "avatar">
 
-        </Avatar>
+              <FiCamera/>
 
-        <div className="inputs-wrapper">
+              <input 
+                id = "avatar" 
+                type = "file"
+                onChange = {handleChangeAvatar}
+              />
 
-          <Input
-            placeholder = "Nome"
-            type = "text"
-            icon = {FiUser}
-            value = {name}
-            onChange = {ev => setName(ev.target.value)}
-          />
+            </label>
 
-          <Input
-            placeholder = "E-mail"
-            type = "text"
-            icon = {FiMail}
-            value = {email}
-            onChange = {ev => setEmail(ev.target.value)}
-          />
+          </Avatar>
 
-          <Input
-            placeholder = "Senha atual"
-            type = "password"
-            icon = {FiLock}
-            onChange = {event => setPasswordOld(event.target.value)}
-          />
+          <div className="inputs-wrapper">
 
-          <Input
-            placeholder = "Nova senha"
-            type = "password"
-            icon = {FiLock}
-            onChange = {ev => setPasswordNew(ev.target.value)}
-          />
+            <Input
+              placeholder = "Nome"
+              type = "text"
+              icon = {FiUser}
+              value = {name}
+              onChange = {ev => setName(ev.target.value)}
+            />
 
-        </div>
+            <Input
+              placeholder = "E-mail"
+              type = "text"
+              icon = {FiMail}
+              value = {email}
+              onChange = {ev => setEmail(ev.target.value)}
+            />
 
-        <div className="buttons-wrapper">
+            <Input
+              placeholder = "Senha atual"
+              type = "password"
+              icon = {FiLock}
+              onChange = {event => setPasswordOld(event.target.value)}
+            />
 
-          <Button title = "Salvar" onClick = {handleUpdate}/>
-          <Button title = "Sair" onClick = {handleSignOut}/>
+            <Input
+              placeholder = "Nova senha"
+              type = "password"
+              icon = {FiLock}
+              onChange = {ev => setPasswordNew(ev.target.value)}
+            />
 
-        </div>
+          </div>
+
+          <div className="buttons-wrapper">
+
+            <Button title = "Salvar" onClick = {handleUpdate}/>
+            <Button title = "Sair" onClick = {handleSignOut}/>
+
+          </div>
 
         </Form>
 
       </Content>
+
+      <Footer/>
 
     </Container>
   )

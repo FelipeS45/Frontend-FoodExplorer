@@ -5,7 +5,7 @@ import { Card } from "../../components/card";
 import { Banner } from "../../components/banner";
 import { Input } from "../../components/input";
 
-import { FiSearch } from "react-icons/fi";
+import { FiSearch, FiMenu } from "react-icons/fi";
 
 import { useAuth } from "../../hooks/auth";
 
@@ -57,6 +57,8 @@ export function Home() {
 
       <Header>
 
+        <FiMenu/>
+
         <div className="logo-wrapper">
 
           <svg width="26" height="30" viewBox="0 0 26 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -85,7 +87,7 @@ export function Home() {
 
       <Content>
 
-        <Banner />
+        <Banner/>
 
         <Cards>
 

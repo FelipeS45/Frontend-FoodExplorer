@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 import { Link } from 'react-router-dom';
 
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
+
 export const Container = styled.div`
 `
 
@@ -12,6 +14,24 @@ export const Main = styled.div`
     display: flex;
     align-items: center;
     gap: 5px;
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    padding: 50px;
+
+    margin-bottom: 96px;
+
+    .plateimg-wrapper img {
+      width: 250px;
+      height: 250px;
+
+      margin: auto;
+    }
+    
+    .screen-wrapper {
+      display: flex;
+      flex-direction: column;
+    }
   }
 `
 

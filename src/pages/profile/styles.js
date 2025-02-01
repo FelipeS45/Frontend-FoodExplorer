@@ -1,49 +1,46 @@
 import styled from "styled-components";
 
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
+
 export const Container = styled.div`
   width: 100%;
-
-  padding: 100px 250px;
-
-  >header{
-    width: 100%;
-    height: 144px;
-
-    background: ${({theme}) => theme.COLORS.BACKGROUND_900};
-
-    display: flex;
-    align-items: center;
-
-    padding: 0px 124px;
-
-    svg{
-      color: ${({theme}) => theme.COLORS.GRAY_100};
-      font-size: 24px;      
-    }
-
-    button{
-      background: none;
-      border: none;
-    }
-  }
 `
 
 export const Content = styled.div`
   margin: auto;
+  width: 100%;
+  max-width: 600px;
+  background: ${({ theme }) => theme.COLORS.DARK_400};
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  background: ${({theme}) => theme.COLORS.DARK_700};
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    padding: 4rem;
+    margin-bottom: 120px;
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+    padding: 2rem;
+    margin-bottom: 120px;
+  }
+`;
+
+export const Form = styled.form`
+  width: 100%;
+  max-width: 450px;
+  margin: 120px 0;
+
+  padding: 5rem;
 
   border: none;
   border-radius: 5px;
 
-  padding: 64px 24px;
-`
+  background: ${({ theme }) => theme.COLORS.DARK_700};
 
-export const Form = styled.form`
-  max-width: 340px;
-  margin: 30px auto 0;
-
-  >div:nth-child(2){
+  > div:nth-child(2) {
     margin-top: 72px;
   }
 
@@ -52,7 +49,7 @@ export const Form = styled.form`
 
     display: flex;
     flex-direction: column;
-    gap: 94px;
+    gap: 20px;
   }
 
   .inputs-wrapper {
@@ -60,47 +57,53 @@ export const Form = styled.form`
     flex-direction: column;
     gap: 24px;
   }
-`
+  
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    padding: 4rem;
+
+  }
+`;
 
 export const Avatar = styled.div`
   position: relative;
   margin: 0 auto 32px;
-
   width: 186px;
   height: 186px;
 
-  >img{
-    width: 186px;
-    height: 186px;
+  > img {
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
   }
 
-  >label{
+  > label {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-
-    background-color: ${({theme}) => theme.COLORS.ORANGE};
-
+    background-color: ${({ theme }) => theme.COLORS.ORANGE};
     display: flex;
     align-items: center;
     justify-content: center;
-
     position: absolute;
-    bottom: -32px;
-    right: 7px;
-
+    bottom: -15px;
+    right: -15px;
     cursor: pointer;
 
-    >input{
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+      width: 40px;
+      height: 40px;
+      bottom: -5px;
+      right: -10px;
+    }
+
+    > input {
       display: none;
     }
 
-    svg{
+    svg {
       width: 32px;
       height: 32px;
-
-      color: ${({theme}) => theme.COLORS.BACKGROUND_800};
+      color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
     }
   }
-` 
+`;

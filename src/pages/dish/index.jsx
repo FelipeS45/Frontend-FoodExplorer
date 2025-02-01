@@ -57,37 +57,41 @@ export function Dish() {
 
         <Content>
 
-          <div className="plateimg-wrapper">
-            <img src={dishImageURL} alt="Imagem do prato escolhido" />
-          </div>
-
-          <div className="content-wrapper">
-
-            <h1>{data?.name}</h1>
-            <p>{data?.description}</p>
-
-            <div className="ingredients-wrapper">
-              
-              {
-                data?.ingredients?.map((ingredient) => (
-                  <Ingredients 
-                    key={String(ingredient.id)} 
-                    name={ingredient.name} 
-                  />
-                ))
-              }
-
+          <div className="screen-wrapper">
+            
+            <div className="plateimg-wrapper">
+              <img src={dishImageURL} alt="Imagem do prato escolhido" />
             </div>
 
-            <div className="interactions-wrapper">
+            <div className="content-wrapper">
 
-              <div className="admin-only">
-                <Button title="Editar prato" onClick={editDish} />
+              <h1>{data?.name}</h1>
+              <p>{data?.description}</p>
+
+              <div className="ingredients-wrapper">
+                
+                {
+                  data?.ingredients?.map((ingredient) => (
+                    <Ingredients 
+                      key={String(ingredient.id)} 
+                      name={ingredient.name} 
+                    />
+                  ))
+                }
+
+              </div>
+
+              <div className="interactions-wrapper">
+
+                <div className="admin-only">
+                  <Button title="Editar prato" onClick={editDish} />
+                </div>
+
               </div>
 
             </div>
-
-          </div>
+            
+          </div>          
 
         </Content>
 

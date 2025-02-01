@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 import { Link } from 'react-router-dom';
 
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
+
 export const Container = styled.div`
   padding: 24px 123px;
 
@@ -10,7 +12,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 3.2rem;
 
   background-color: ${({theme}) => theme.COLORS.DARK_600};
@@ -34,6 +36,16 @@ export const Container = styled.div`
     width: 216px;
     height: 56px;
   }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    gap: 1rem;
+
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
 `
 
 export const NewDishButton = styled(Link)`
@@ -52,9 +64,16 @@ export const NewDishButton = styled(Link)`
   color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
   background-color: ${({ theme }) => theme.COLORS.RED_100};
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    padding: 8px 12px;
+  }
 `
 
 export const ProfileView = styled(Link)`
+  display: flex;
+  gap: 12px;
+
   >img{
     width: 55px;
     height: 55px;

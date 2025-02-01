@@ -27,15 +27,9 @@ export function Header(){
       
       </div>
 
-      <Input
-        placeholder = "Busque por pratos"
-        type = "text"
-        icon = {FiSearch}
-      />
-
-      <NewDishButton to = "/newdish">Novo Prato</NewDishButton>
-
       <ProfileView to = "/profile">
+
+        <NewDishButton to = "/newdish">Novo Prato</NewDishButton>
               
         <img src = {avatarUrl} alt="Foto do usuário"/>
               

@@ -22,6 +22,24 @@ O projeto final Rocketseat FoodExplorer é uma aplicação web desenvolvida para
 
 ```
 
+### Versão admin da aplicação
+
+```bash
+
+  # E-mail: felipe@admin.com
+  # senha: 123
+
+```
+
+### Versão customer (usuário comum) da aplicação
+
+```bash
+
+  # E-mail: joao@email.com
+  # senha: 123
+
+```
+
 ## Tecnologias utilizadas
 
 A parte Frontend do projeto foi desenvolvida com a utilização das seguintes tecnologias:
@@ -29,9 +47,40 @@ A parte Frontend do projeto foi desenvolvida com a utilização das seguintes te
 - [ReactJS](https://react.dev/)
 - [JavaScript]()
 - [ReactDOM](https://www.npmjs.com/package/react-dom)
-- [React-Router-DOM](https://www.npmjs.com/package/react-router-dom)
+- [React Router DOM](https://www.npmjs.com/package/react-router-dom)
 - [Axios](https://www.npmjs.com/package/axios)
-- [React-Icons](https://react-icons.github.io/react-icons/)
-- [Styled-Components](https://styled-components.com/)
+- [React Icons](https://react-icons.github.io/react-icons/)
+- [Styled Components](https://styled-components.com/)
 - [Swiper](https://swiperjs.com/react)
 
+### - ReactJS 
+
+Biblioteca JavaScript voltada ao frontend e amplamente utilizada para o desenvolvimento de interfaces de usuário (UIs).
+
+### - JavaScript
+
+Linguagem de programação de tipagem fraca (não exige que o tipo de uma variável ou função seja declarado quando ela é criada) amplamente utilizada para a criação de páginas Web. Pode ser utilizada tanto no frontend (ex.: ReactJS) quanto no backend (ex.: NodeJS).
+
+### - ReactDOM
+
+Responsável por renderizar componentes ou elementos React na DOM.
+
+### - React Router DOM
+
+Biblioteca React que permite o gerenciamento de rotas entre páginas de uma aplicação Web.
+
+### - Axios
+
+Biblioteca React que possibilita a interação de um projeto React com APIs externas.
+
+### - React Icons
+
+Bibioteca React utilizada para adicionar ícones a botões no geral.
+
+### - Styled Components
+
+Biblioteca React que possibilita o uso do CSS-in-JS para estilização de componentes e páginas React.
+
+### - Swiper
+
+Biblioteca React que possibilita aos usuários a navegação horizontal por componentes em páginas react.

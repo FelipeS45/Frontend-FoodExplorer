@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
   max-width: 100vw;
@@ -13,10 +15,11 @@ export const Container = styled.div`
   width: 100%;
 
   color: ${({theme}) => theme.COLORS.LIGHT_700};
-
   background-color: ${({theme}) => theme.COLORS.DARK_600};
 
   position: fixed;
+  z-index: 1; 
+
   bottom: 0;
 
   .logo-wrapper {
@@ -33,4 +36,8 @@ export const Container = styled.div`
   h1 {
     font-size: 2.4rem;
   }
-`
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    padding: 18px 50px;
+  }
+`;

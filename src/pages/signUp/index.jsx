@@ -57,7 +57,7 @@ export function SignUp() {
   
         <Form>
   
-          <h2>Faça seu Registro</h2>
+          <h2>Faça seu registro</h2>
 
           <div className = "input">
 
