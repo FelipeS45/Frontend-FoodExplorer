@@ -1,17 +1,26 @@
 import styled from "styled-components";
-
-import { Link } from 'react-router-dom';
-
 import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+  display: grid;
+  grid-template-columns: ${({ menuIsOpen }) => (menuIsOpen ? '280px' : '0')} auto;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar banner"
+    "sidebar content"
+    "sidebar footer"
+  ;
+
+  max-width: 100vw;
   height: 100vh;
-  width: 100vw;
+
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;  
+  box-sizing: border-box;
+
+  .banner-wrapper {
+    padding: 48px 64px;
+  }
 
   &::-webkit-scrollbar {
     width: 10px;
@@ -30,105 +39,54 @@ export const Container = styled.div`
   &::-webkit-scrollbar-thumb:hover {
     background: ${({ theme }) => theme.COLORS.LIGHT_300};
   }
-
-  color: ${({ theme }) => theme.COLORS.LIGHT_400};
-`
-
-export const FiMenu = styled.div`
-  width: 24px;
-  height: 24px;
-`
-
-export const Header = styled.div`
-  padding: 24px 123px;
-  max-width: 100vw;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 3.2rem;
-  background-color: ${({ theme }) => theme.COLORS.DARK_600};
-
-  .logo-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 1.9rem;
-  }
-
-  svg {
-    height: 3rem;
-    width: 3rem;
-  }
-
-  h1 {
-    font-size: 2.4rem;
-  }
-
-  button {
-    width: 216px;
-    height: 56px;
-  }
-
-  span {
-    display: inline;
-    white-space: nowrap;
-
-    background: ${({ theme }) => theme.COLORS.RED_100};
-
-    padding: 18px 16px;
-
-    border: none;
-    border-radius: 5px;
-
-    color: ${({ theme }) => theme.COLORS.LIGHT_100};
-  }
-`
-
-export const NewDishButton = styled(Link)`
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-  min-height: 55px;
-  padding: 12px 32px;
-  border-radius: 5px;
-  border: none;
-  font-weight: 500;
-  color: ${({ theme }) => theme.COLORS.LIGHT_100};
-  background-color: ${({ theme }) => theme.COLORS.RED_100};
 `;
 
-export const ProfileView = styled(Link)`
-  > img {
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
+export const Banner = styled.div`
+  grid-area: banner;
+
+  margin-top: 24px;
+  padding: 32px 50px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  background: var(--Gradients-200, linear-gradient(180deg, #091E26 0%, #00131C 100%));
+  border: none;
+  border-radius: 8px;
+  height: 290px;
+  max-width: 100%;
+  
+  h1 {
+    font-size: 4rem;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 64px;
+    margin-bottom: 8px;
   }
-`
+
+  p {
+    text-align: center;
+    margin-top: 24px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    z-index: -1;
+    margin-left: -108px;
+    margin-top: -79px;
+  }
+`;
 
 export const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-bottom: 48px;
-`
+  grid-area: content;
+  max-width: 100vw;
 
-export const Cards = styled.div`
-  margin-top: 54px;
-  padding: 0px 120px;
-
-  .section-dishes, .section-desserts, .section-drinks {
-    margin-bottom: 32px;
-    font-size: 42px;
-    font-weight: 400;
-    font-family: "Poppins", sans-serif;
-  }
-
-  .dishes-wrapper, .desserts-wrapper, .drinks-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    flex-wrap: wrap;
-    place-content: center;
+  .cards-wrapper {
+    padding: 12px 72px;
+    .section-dishes, .section-desserts, .section-drinks {
+      font-size: 42px;
+      margin-bottom: 32px;
+    }
   }
 
   .swiper-button-next, .swiper-button-prev {
@@ -136,9 +94,4 @@ export const Cards = styled.div`
     width: 14px;
     height: 14px;
   }
-
-  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-    padding: 0 35px;
-    margin-bottom: 32px;
-  }
-`
+`;

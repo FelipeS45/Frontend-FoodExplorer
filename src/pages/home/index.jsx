@@ -1,36 +1,33 @@
-import { Container, Header, NewDishButton, ProfileView, Content, Cards } from "./styles";
+import { useState, useEffect } from "react";
+import { Container, Banner, Content } from "./styles";
 
 import { Footer } from "../../components/footer";
+import { Header } from "../../components/header";
 import { Card } from "../../components/card";
-import { Banner } from "../../components/banner";
-import { Input } from "../../components/input";
-
-import { FiSearch, FiMenu } from "react-icons/fi";
+import { SideBar } from "../../components/sidebar";
+import background from "../../assets/Background.png";
 
 import { useAuth } from "../../hooks/auth";
-
-import { useState, useEffect } from "react";
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
-
 import { api } from "../../services/api";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper/modules";
 
 export function Home() {
+  
+  const { user } = useAuth();
+  const [dishes, setDishes] = useState([]);
+  const [search, setSearch] = useState("");
+  const [cart, setCart] = useState([]);
+  const [menuIsOpen, setMenuIsOpen] = useState(false); 
 
-  const { user } = useAuth()
-  const [dishes, setDishes] = useState([])
-  const [search, setSearch] = useState("")
-  const [cart, setCart] = useState([])  
-
-  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : ""
+  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : "";
 
   useEffect(() => {
     async function fetchDishes() {
-      const response = await api.get(`/dishes?name=${search}`)
-      setDishes(response.data)
+      const response = await api.get(`/dishes?name=${search}`);
+      setDishes(response.data);
     }
 
     fetchDishes();
@@ -38,102 +35,92 @@ export function Home() {
 
   const handleAddToCart = (id, quantity) => {
     setCart((prevCart) => {
-      const existingItem = prevCart.find(item => item.id === id)
+      const existingItem = prevCart.find(item => item.id === id);
       if (existingItem) {
         return prevCart.map(item =>
           item.id === id ? { ...item, quantity: item.quantity + quantity } : item
         )
+
       } else {
-        return [...prevCart, { id, quantity }]
+        return [...prevCart, { id, quantity }];
       }
-    })
-  }
+    });
+  };
 
   const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
 
-    <Container>
+    <Container menuIsOpen={menuIsOpen}>
 
-      <Header>
+      <SideBar menuIsOpen={menuIsOpen} onCloseMenu={() => setMenuIsOpen(false)} onSearch={setSearch}/>
 
-        <FiMenu/>
+      <Header onMenuToggle={() => setMenuIsOpen(prev => !prev)} /> 
 
-        <div className="logo-wrapper">
+      <div className="banner-wrapper">
 
-          <svg width="26" height="30" viewBox="0 0 26 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13.0635 0.306641L25.7096 7.60782V22.2102L13.0635 29.5114L0.417527 22.2102V7.60782L13.0635 0.306641Z" fill="#065E7C"/>
-          </svg>
-          <h1>FoodExplorer</h1>
+        <Banner>
 
-        </div>
+          <div className="banner">
+            <img src={background} alt="Imagem de ingredientes" />
+          </div>
 
-        <Input 
-          placeholder="Busque por pratos" 
-          type="text" 
-          icon={FiSearch} 
-          onChange={(ev) => setSearch(ev.target.value)} 
-        />
+          <div className="title-wrapper">
+            <h1>Sabores inigualáveis</h1>
+            <p>Sinta o cuidado do preparo com ingredientes selecionados</p>
+          </div>
 
-        <NewDishButton to="/newdish">Novo Prato</NewDishButton>
+        </Banner>
 
-        <span>Pedidos: {totalQuantity}</span>
-
-        <ProfileView to="/profile">
-          <img src={avatarUrl} alt="Foto do usuário"/>
-        </ProfileView>
-
-      </Header>
+      </div>
 
       <Content>
 
-        <Banner/>
-
-        <Cards>
+        <div className="cards-wrapper">
 
           <p className="section-dishes">Pratos</p>
 
-          <Swiper modules={[Navigation]} navigation spaceBetween={32} slidesPerView={'auto'}>
-            
-            {
-              dishes.filter(dish => dish.category === "dishes").map((dish, index) => (
-                <SwiperSlide key={index} style={{ width: 'auto' }}>
+          <Swiper modules={[Navigation]} navigation spaceBetween={32} slidesPerView={"auto"}>
+
+            {dishes
+              .filter((dish) => dish.category === "dishes")
+              .map((dish, index) => (
+                <SwiperSlide key={index} style={{ width: "auto" }}>
                   <Card data={dish} onAdd={handleAddToCart} />
                 </SwiperSlide>
-              ))
-            }
+              ))}
 
           </Swiper>
 
           <p className="section-desserts">Sobremesas</p>
 
-          <Swiper modules={[Navigation]} navigation spaceBetween={32} slidesPerView={'auto'}>
-            
-            {
-              dishes.filter(dish => dish.category === "dessert").map((dish, index) => (
-                <SwiperSlide key={index} style={{ width: 'auto' }}>
+          <Swiper modules={[Navigation]} navigation spaceBetween={32} slidesPerView={"auto"}>
+
+            {dishes
+              .filter((dish) => dish.category === "dessert")
+              .map((dish, index) => (
+                <SwiperSlide key={index} style={{ width: "auto" }}>
                   <Card data={dish} onAdd={handleAddToCart} />
                 </SwiperSlide>
-              ))
-            }
+              ))}
 
           </Swiper>
 
           <p className="section-drinks">Bebidas</p>
 
-          <Swiper modules={[Navigation]} navigation spaceBetween={32} slidesPerView={'auto'}>
-            
-            {
-              dishes.filter(dish => dish.category === "drinks").map((dish, index) => (
-                <SwiperSlide key={index} style={{ width: 'auto' }}>
+          <Swiper modules={[Navigation]} navigation spaceBetween={32} slidesPerView={"auto"}>
+
+            {dishes
+              .filter((dish) => dish.category === "drinks")
+              .map((dish, index) => (
+                <SwiperSlide key={index} style={{ width: "auto" }}>
                   <Card data={dish} onAdd={handleAddToCart} />
                 </SwiperSlide>
-              ))
-            }
+              ))}
 
           </Swiper>
 
-        </Cards>
+        </div>
 
       </Content>
 

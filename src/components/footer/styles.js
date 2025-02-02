@@ -3,24 +3,22 @@ import styled from "styled-components";
 import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
+  grid-area: footer;
+
   max-width: 100vw;
-  padding: 24px 123px;
+  padding: 24px 48px;
 
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 3.2rem;
-
-  width: 100%;
 
   color: ${({theme}) => theme.COLORS.LIGHT_700};
   background-color: ${({theme}) => theme.COLORS.DARK_600};
 
   position: fixed;
-  z-index: 1; 
-
   bottom: 0;
+  width: 100%;
+  z-index: 1;
 
   .logo-wrapper {
     display: flex;
