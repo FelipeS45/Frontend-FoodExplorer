@@ -2,6 +2,8 @@ import styled from "styled-components"
 
 import { Link } from 'react-router-dom';
 
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
+
 export const Container = styled.div`
   min-height: 452px;
   width: 304px;
@@ -71,7 +73,7 @@ export const Container = styled.div`
     background: ${({theme}) => theme.COLORS.DARK_200};
 
     button {
-    background: ${({theme}) => theme.COLORS.DARK_400};
+    background: ${({theme}) => theme.COLORS.DARK_200};
     border: none;
 
     font-size: 20px;
@@ -79,6 +81,24 @@ export const Container = styled.div`
 
     display: flex;
     align-items: center;
+    }
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    min-height: 422px;
+
+    .content-wrapper {
+      h1 {
+        font-size: 24px;
+      }
+
+      p {
+        font-size: 12px;  
+      }
+
+      h2 {
+        font-size: 20px;
+      }
     }
   }
 `

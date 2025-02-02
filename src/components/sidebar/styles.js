@@ -18,8 +18,8 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 48px;
-  padding: 32px 12px;
+  gap: 38px;
+  padding: 36px 12px;
 
   .logo-wrapper {
     display: flex;

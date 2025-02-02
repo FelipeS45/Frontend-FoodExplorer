@@ -1,16 +1,42 @@
 import { Container, Header, NewDishButton } from "./styles";
+
 import { Input } from "../input";
+import { ButtonText } from "../buttonText";
+
 import { FiSearch } from "react-icons/fi";
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 
 export function SideBar({ menuIsOpen, onCloseMenu, onSearch }) {
+  
   const [search, setSearchInput] = useState("");
+
+  const [ingredients, setIngredients] = useState([])
+  const [ingredientsSelected, setIngredientsSelected] = useState([])
 
   const handleSearchChange = (ev) => {
     const newValue = ev.target.value;
     setSearchInput(newValue);
     onSearch(newValue); 
-  };
+  }
+
+  function handleIngredientSelected(ingredientName) {
+
+    if(ingredientName === "all") {
+      return setIngredientsSelected([])
+    }
+
+    const alreadySelected = ingredientsSelected.includes(ingredientName)
+
+    if(alreadySelected) {
+      const filteredIngredients = ingredientsSelected.filter(ingredient => ingredient !== ingredientName)
+      setIngredientsSelected(filteredIngredients)
+
+    } else {
+      setIngredientsSelected(prevState => [...prevState, ingredientName])
+    }
+  }
+
 
   return (
     <Container data-menu-is-open={menuIsOpen}>
@@ -28,28 +54,31 @@ export function SideBar({ menuIsOpen, onCloseMenu, onSearch }) {
 
         {
           menuIsOpen && 
+          (      
+            <NewDishButton to = "/newdish">Novo prato</NewDishButton>  
+          )
+        }
+
+        {
+          menuIsOpen && 
             (
-              <div className="input-wrapper">
-                <Input
-                  placeholder="Busque por pratos"
-                  type="text"
-                  icon={FiSearch}
-                  value={search}
-                  onChange={handleSearchChange}
-                />
-              </div>
+              (
+                <div className="input-wrapper">
+                  <Input
+                    placeholder="Busque por pratos"
+                    type="text"
+                    icon={FiSearch}
+                    value={search}
+                    onChange={handleSearchChange}
+                  />
+                </div>
+  
+              )
 
             )
         }
 
       </Header>
-
-      {
-        menuIsOpen && 
-          (      
-            <NewDishButton to = "/newdish">Novo prato</NewDishButton>        
-          )
-      }
 
     </Container>
   );

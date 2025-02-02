@@ -23,7 +23,7 @@ export const Container = styled.div`
   .logo-wrapper {
     display: flex;
     align-items: center;
-    gap: 1.9rem;
+    gap: 20px;
   }
 
   svg {
@@ -36,6 +36,23 @@ export const Container = styled.div`
   }
 
   @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-    padding: 18px 50px;
+    padding: 18px 24px;
+
+    .logo-wrapper {
+      gap: 8px;
+
+      h1 {
+        font-size: 18px;
+      }
+    }
+
+    p {
+      text-align: center;
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+    padding: 18px;
   }
 `;

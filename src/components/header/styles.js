@@ -22,7 +22,7 @@ export const Container = styled.div`
   .logo-wrapper {
     display: flex;
     align-items: center;
-    gap: 1.9rem;
+    gap: 14px;
   }
 
   svg {
@@ -38,17 +38,21 @@ export const Container = styled.div`
     background: none;
     border: none;
 
+    margin-top: 8px;
+
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
   }
 
   @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-    gap: 1rem;
+    padding: 24px;
+  }
 
-    .logo-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
+  @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+    padding: 18px 6px;
+
+    display: flex;
+    align-items: center;
+    gap: 2px;
   }
 `
 

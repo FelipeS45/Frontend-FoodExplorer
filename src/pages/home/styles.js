@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
@@ -39,24 +40,42 @@ export const Container = styled.div`
   &::-webkit-scrollbar-thumb:hover {
     background: ${({ theme }) => theme.COLORS.LIGHT_300};
   }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    .banner-wrapper {
+      padding: 32px 20px;
+    }
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+    .banner-wrapper {
+      padding: 32px 20px;
+    }
+  }
 `;
 
 export const Banner = styled.div`
   grid-area: banner;
 
   margin-top: 24px;
+
   padding: 32px 50px;
+
   display: flex;
   justify-content: space-between;
+
   position: relative;
+
   background: var(--Gradients-200, linear-gradient(180deg, #091E26 0%, #00131C 100%));
+
   border: none;
   border-radius: 8px;
+
   height: 290px;
   max-width: 100%;
   
   h1 {
-    font-size: 4rem;
+    font-size: 42px;
     font-weight: 500;
     text-align: center;
     margin-top: 64px;
@@ -65,7 +84,7 @@ export const Banner = styled.div`
 
   p {
     text-align: center;
-    margin-top: 24px;
+    margin-top: 16px;
   }
 
   img {
@@ -74,6 +93,33 @@ export const Banner = styled.div`
     z-index: -1;
     margin-left: -108px;
     margin-top: -79px;
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    height: 314px;
+
+    display: flex;
+    flex-direction: row;
+
+    padding: 32px 10px 0 0;
+
+    .title-wrapper {
+      h1 {
+        font-size: 26px;
+      }
+
+      p {
+        font-size: 14px;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 360px;
+
+      margin-left: -16px;
+      margin-top: -79px;
+    }
   }
 `;
 
@@ -93,5 +139,16 @@ export const Content = styled.div`
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
     width: 14px;
     height: 14px;
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    .cards-wrapper {
+      padding: 12px;
+
+      .section-dishes, .section-desserts, .section-drinks {
+        font-size: 28px;
+        margin-bottom: 24px;
+      }
+    }
   }
 `;
