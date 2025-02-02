@@ -42,10 +42,15 @@ export const BackToHome = styled(Link)`
 export const Content = styled.div`
   margin-top: 96px;
 
-  display: flex;
-  gap: 64px;
+  display: grid;
+  place-items: center;
 
   font-family: "Poppins", sans-serif;
+
+  .screen-wrapper {
+    display: flex;
+    gap: 56px;
+  }
 
   .content-wrapper {
     margin-top: 48px;

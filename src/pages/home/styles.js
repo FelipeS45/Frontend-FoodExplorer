@@ -82,7 +82,7 @@ export const Content = styled.div`
   max-width: 100vw;
 
   .cards-wrapper {
-    padding: 12px 72px;
+    padding: 12px 72px 72px 72px;
     .section-dishes, .section-desserts, .section-drinks {
       font-size: 42px;
       margin-bottom: 32px;

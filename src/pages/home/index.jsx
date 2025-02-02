@@ -33,22 +33,6 @@ export function Home() {
     fetchDishes();
   }, [search]);
 
-  const handleAddToCart = (id, quantity) => {
-    setCart((prevCart) => {
-      const existingItem = prevCart.find(item => item.id === id);
-      if (existingItem) {
-        return prevCart.map(item =>
-          item.id === id ? { ...item, quantity: item.quantity + quantity } : item
-        )
-
-      } else {
-        return [...prevCart, { id, quantity }];
-      }
-    });
-  };
-
-  const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
-
   return (
 
     <Container menuIsOpen={menuIsOpen}>
@@ -86,7 +70,7 @@ export function Home() {
               .filter((dish) => dish.category === "dishes")
               .map((dish, index) => (
                 <SwiperSlide key={index} style={{ width: "auto" }}>
-                  <Card data={dish} onAdd={handleAddToCart} />
+                  <Card data={dish} />
                 </SwiperSlide>
               ))}
 
@@ -100,7 +84,7 @@ export function Home() {
               .filter((dish) => dish.category === "dessert")
               .map((dish, index) => (
                 <SwiperSlide key={index} style={{ width: "auto" }}>
-                  <Card data={dish} onAdd={handleAddToCart} />
+                  <Card data={dish} />
                 </SwiperSlide>
               ))}
 
@@ -114,7 +98,7 @@ export function Home() {
               .filter((dish) => dish.category === "drinks")
               .map((dish, index) => (
                 <SwiperSlide key={index} style={{ width: "auto" }}>
-                  <Card data={dish} onAdd={handleAddToCart} />
+                  <Card data={dish} />
                 </SwiperSlide>
               ))}
 
