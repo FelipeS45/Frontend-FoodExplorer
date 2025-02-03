@@ -13,6 +13,7 @@ import { api } from "../../services/api";
 
 export function Card({ data, onAdd, ...rest }) {
   const [quantity, setQuantity] = useState(1)
+  const [isFavorite, setIsFavorite] = useState(false); // Estado para controlar o coração
 
   const dishImageURL = data.image ? `${api.defaults.baseURL}/files/${data.image}` : Logo
 
@@ -28,6 +29,10 @@ export function Card({ data, onAdd, ...rest }) {
     onAdd(data.id, quantity)  
   }
 
+  function toggleFavorite() {
+    setIsFavorite(!isFavorite)
+  }
+
   return (
 
     <Container>
@@ -39,7 +44,12 @@ export function Card({ data, onAdd, ...rest }) {
         </DishView>
 
         <div className="favorites-wrapper">
-          <button><FiHeart /></button>
+          <button onClick = {toggleFavorite}>
+            <FiHeart
+              color={isFavorite ? "#AB222E" : ""} 
+              fill={isFavorite ? "#AB222E" : ""}
+            />
+          </button>
         </div>
 
         <div className="edit-wrapper">

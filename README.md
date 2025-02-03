@@ -1,8 +1,30 @@
+<h1 align = "center">
+  <img src = "./src/assets/Logo.png">
+</h1>
+
 ## Sobre o projeto
 
 O projeto final Rocketseat FoodExplorer é uma aplicação web desenvolvida para um restaurante fictício. Nela, um usuário deve ter a capacidade de, ao se cadastrar na página e realizar o seu Login, criar novos pratos (caso seja um usuário **admin**), visualizar e editar esses pratos. Já caso o usuário seja um **customer**, ele deverá poder, ao se cadastrar na página e se autenticar, visualizar os pratos criados e adicioná-los aos seus pedidos. Além disso, todos os usuários possuem a capacidade de alterar seus perfis (avatar, nome, email e senha). Por fim, o projeto conta com telas responsivas a diversos aparelhos (mobile e desktop) para melhor experiência do usuário. 
 
 ## Como utilizar o projeto
+
+### Versão admin da aplicação
+
+```bash
+
+  # E-mail: felipe@admin.com
+  # senha: 123
+
+```
+
+### Versão customer (usuário comum) da aplicação
+
+```bash
+
+  # E-mail: joao@email.com
+  # senha: 123456
+
+```
  
 ### Executando o Frontend do projeto
 
@@ -19,24 +41,6 @@ O projeto final Rocketseat FoodExplorer é uma aplicação web desenvolvida para
 
   # Agora, basta executar cntrl + click no endereço exibido no terminal ou digitar no seu navegador de preferência:
   $ http://localhost:5173/
-
-```
-
-### Versão admin da aplicação
-
-```bash
-
-  # E-mail: felipe@admin.com
-  # senha: 123
-
-```
-
-### Versão customer (usuário comum) da aplicação
-
-```bash
-
-  # E-mail: joao@email.com
-  # senha: 123
 
 ```
 
