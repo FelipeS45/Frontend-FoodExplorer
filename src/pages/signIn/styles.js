@@ -63,16 +63,20 @@ export const Form = styled.form`
     width: 100%;
   }
 
-  > h2 {
+  h2 {
     font-size: 3.2rem;
     margin: 48px 0px;
     text-align: center;
   }
 
-  > a {
+  a {
     margin-top: 48px;
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
     text-align: center;
+  }
+
+  .signin {
+    width: 100%;
   }
 
   @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {

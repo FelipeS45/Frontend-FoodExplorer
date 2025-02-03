@@ -5,6 +5,8 @@ import { Button } from "../../components/button";
 import { ButtonText } from "../../components/buttonText";
 import { Footer } from "../../components/footer";
 
+import avatarPlaceholder from "../../assets/avatar_placeholder.svg"
+
 import { FiArrowLeft, FiUser, FiMail, FiLock, FiCamera } from "react-icons/fi";
 
 import { useAuth } from "../../hooks/auth";
@@ -13,7 +15,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { api } from "../../services/api"
-import { Main } from "../newDish/styled";
 
 export function Profile(){
 
@@ -24,7 +25,7 @@ export function Profile(){
   const [passwordOld, setPasswordOld] = useState()
   const [passwordNew, setPasswordNew] = useState()
 
-  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : ""
+  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
 
   const [avatar, setAvatar] = useState(avatarUrl)
   const [avatarFile, setAvatarFile] = useState(null)
@@ -54,6 +55,8 @@ export function Profile(){
     }
 
     const userUpdated = Object.assign(user, updated)
+
+    navigate("/")
 
     await updateProfile({user: userUpdated, avatarFile})
   }

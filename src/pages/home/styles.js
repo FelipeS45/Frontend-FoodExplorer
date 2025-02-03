@@ -49,7 +49,7 @@ export const Container = styled.div`
 
   @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
     .banner-wrapper {
-      padding: 32px 20px;
+      padding: 32px 14px;
     }
   }
 `;
@@ -143,11 +143,22 @@ export const Content = styled.div`
 
   @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
     .cards-wrapper {
-      padding: 12px;
+      padding: 32px;
 
       .section-dishes, .section-desserts, .section-drinks {
         font-size: 28px;
         margin-bottom: 24px;
+      }
+    }
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+    .cards-wrapper {
+      padding: 12px;
+
+      .section-dishes, .section-desserts, .section-drinks {
+        font-size: 24px;
+        margin-bottom: 18px;
       }
     }
   }

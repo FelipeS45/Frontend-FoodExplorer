@@ -1,4 +1,4 @@
-import { Container, Main, Image, Content } from "./styled";
+import { Container, Main, Image, Form } from "./styled";
 
 import { Header } from "../../components/header";
 import { Footer } from "../../components/footer";
@@ -80,24 +80,24 @@ export function NewDish() {
 
       <Main>
 
-        <div className="gobackbutton-wrapper">
-        
-          <FiArrowLeft/>
-          <ButtonText title = "Voltar" onClick = {handleBack}/>
-        
+        <div className="header-wrapper">
+
+          <div className="gobackbutton-wrapper">
+
+            <FiArrowLeft/>
+            <ButtonText title = "Voltar" onClick= {handleBack}/>
+
+          </div>
+
+          <h1>Criar Prato</h1>        
+
         </div>
 
-        <h1>Adicionar prato</h1>
-
-      </Main>
-
-      <Content>
-
-        <div className="dish-details">
+        <Form>
 
           <div className="image-wrapper">
 
-            <p>Imagem do prato</p>
+            <p>Imagem</p>
 
             <Image>
 
@@ -122,13 +122,15 @@ export function NewDish() {
 
             </Image>
 
-          </div>
+          </div>  
 
           <div className="name-wrapper">
 
             <p>Nome</p>
+
             <Input 
-              placeholder = "Nome"
+              placeholder = "Ex.: Salada Ceasar" 
+              className = "name"
               type = "text"
               value = {name}
               onChange = {ev => setName(ev.target.value)}
@@ -146,12 +148,8 @@ export function NewDish() {
               <option value="dessert">Sobremesas</option> 
               <option value="drinks">Bebidas</option>
             </select>
-            
+
           </div>
-
-        </div>
-
-        <div className="ingredients-price">
 
           <div className="ingredients-wrapper">
 
@@ -159,23 +157,24 @@ export function NewDish() {
 
             <div className="insert-ingredients">
 
-            {
-              ingredients.map((ingredient, index) => (
+              {
+                ingredients.map((ingredient, index) => (
 
-                <IngredientItem 
-                  key = {String(index)}
-                  value = {ingredient} 
-                  onClick = {() => handleRemoveIngredient(ingredient)}
-                />
-              ))
-            }
+                  <IngredientItem 
+                    key = {String(index)}
+                    value = {ingredient} 
+                    onClick = {() => handleRemoveIngredient(ingredient)}
+                  />
+                ))
+              }
 
-            <IngredientItem placeholder = "Ingrediente"
-              value = {newIngredient} 
-              onChange = {event => setNewIngredient(event.target.value)}
-              onClick = {handleNewIngredient}
-              isNew
-            />
+              <IngredientItem placeholder = "Ingrediente"
+                value = {newIngredient} 
+                className = "new-ingredient"
+                onChange = {event => setNewIngredient(event.target.value)}
+                onClick = {handleNewIngredient}
+                isNew
+              />
 
             </div>
 
@@ -184,6 +183,7 @@ export function NewDish() {
           <div className="price-wrapper">
 
             <p>Preço</p>
+
             <Input 
               placeholder = "R$ 00,00" 
               type="number"
@@ -192,13 +192,10 @@ export function NewDish() {
             
           </div>
 
-        </div>
-
-        <div className="description-details">
-
           <div className="description-wrapper">
 
             <p>Descrição</p>
+
             <TextArea
               placeholder = "Descrição do prato"
               onChange={e => setDescription(e.target.value)}
@@ -206,15 +203,15 @@ export function NewDish() {
               
           </div>
 
-        </div>
+        </Form>
 
-        <div className="button-wrapper">
+        <Button 
+          className = "save-dish" 
+          title = "Salvar prato"
+          onClick = {handleNewDish}
+        />
 
-          <Button title = "Salvar alterações" onClick = {handleNewDish}/>
-
-        </div>
-
-      </Content>
+      </Main>
 
       <Footer/>
 

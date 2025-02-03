@@ -1,4 +1,4 @@
-import { Container, Main, Image, Content } from "./styles";
+import { Container, Main, Form, Image } from "./styles";
 
 import { Header } from "../../components/header";
 import { Footer } from "../../components/footer";
@@ -125,24 +125,24 @@ export function EditDish() {
 
       <Main>
 
-        <div className="gobackbutton-wrapper">
-        
-          <FiArrowLeft/>
-          <ButtonText title = "Voltar" onClick= {handleBack}/>
+        <div className="header-wrapper">
+
+          <div className="gobackbutton-wrapper">
+
+            <FiArrowLeft/>
+            <ButtonText title = "Voltar" onClick= {handleBack}/>
+
+          </div>
+
+          <h1>Editar Prato</h1>        
 
         </div>
 
-        <h1>Editar Prato</h1>
-
-      </Main>
-
-      <Content>
-
-        <div className="dish-details">
+        <Form>
 
           <div className="image-wrapper">
 
-            <p>Imagem do prato</p>
+            <p>Imagem</p>
 
             <Image>
 
@@ -172,9 +172,9 @@ export function EditDish() {
           <div className="name-wrapper">
 
             <p>Nome</p>
+
             <Input 
               placeholder = "Ex.: Salada Ceasar" 
-              className = "name"
               type = "text"
               value = {name}
               onChange = {ev => setName(ev.target.value)}
@@ -192,12 +192,8 @@ export function EditDish() {
               <option value="dessert">Sobremesas</option> 
               <option value="drinks">Bebidas</option>
             </select>
-            
+
           </div>
-
-        </div>
-
-        <div className="ingredients-price">
 
           <div className="ingredients-wrapper">
 
@@ -230,6 +226,7 @@ export function EditDish() {
           <div className="price-wrapper">
 
             <p>Preço</p>
+
             <Input 
               placeholder = "R$ 00,00" 
               className = "price"
@@ -237,16 +234,13 @@ export function EditDish() {
               value = {price}
               onChange = {ev => setPrice(ev.target.value)}
             />
-            
+
           </div>
-
-        </div>
-
-        <div className="description-details">
 
           <div className="description-wrapper">
 
             <p>Descrição</p>
+
             <TextArea 
               placeholder = "Descrição do prato"
               className = "description"
@@ -256,15 +250,9 @@ export function EditDish() {
 
           </div>
 
-        </div>
+        </Form>
 
         <div className="buttons-wrapper">
-
-          <Button 
-            className = "delete-dish" 
-            title = "Excluir prato"
-            onClick = {handleRemoveDish}
-          />
 
           <Button 
             className = "save-dish" 
@@ -272,11 +260,17 @@ export function EditDish() {
             onClick = {handleUpdateDish}
           />
 
+          <Button 
+            className = "delete-dish" 
+            title = "Excluir prato"
+            onClick = {handleRemoveDish}
+          />
+
         </div>
 
-      </Content>
+      </Main>
 
-      <Footer/>
+      <Footer/> 
 
     </Container>
   )

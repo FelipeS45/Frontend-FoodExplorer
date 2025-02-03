@@ -1,108 +1,81 @@
 import styled from "styled-components";
 
-import { Link } from 'react-router-dom';
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
+  width: 100%;
+  min-width: 320px;
+  height: 100vh;   
+  min-height: 100%;
 `
 
 export const Main = styled.div`
-  padding: 24px 121px 0 121px;
+  padding: 48px 121px 0 121px;
 
   .gobackbutton-wrapper {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 12px;
 
     margin-bottom: 32px;
   }
-`
 
-export const BackToHome = styled(Link)`
-  color: ${({ theme }) => theme.COLORS.LIGHT_100};
-`
-
-export const Image = styled.div`
-
-  .image-upload {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 14px;
-    border-radius: 5px; /* Arredonda as bordas */
+  .header-wrapper {
+    margin-bottom: 24px;
   }
 
-  .upload-button {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 14px 16px;
-    background-color: ${({ theme }) => theme.COLORS.DARK_900};
-    border-radius: 5px;
-    cursor: pointer;
+  .save-dish {
+    margin-top: 24px;
   }
 
-  .upload-button:hover {
-    background-color: ${({ theme }) => theme.COLORS.DARK_800};
-  }
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    padding: 24px 32px 96px 32px;
 
-  .image-upload input {
-    display: none;
+    .save-dish {
+      width: 100%;
+    }
   }
 `
 
-export const Content = styled.div`
-  padding: 0 121px 121px;
+export const Form = styled.div`
+  display: grid;
+  grid-template-areas: 
+  "image name category"
+  "ingredients ingredients price"
+  "description description description";
 
-  .dish-details {
-    display: flex;
-    align-items: center;
-    gap: 32px;
+  grid-template-columns: 320px auto 320px;
 
-    .image-wrapper {
-      max-width: 230px;
+  align-items: center;
+  gap: 32px;
+
+  .image-wrapper, .name-wrapper, .category-wrapper, .ingredients-wrapper, .price-wrapper, .description-wrapper {
+    p {
+      margin-bottom: 10px;
     }
+  }
 
-    .inputimage-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+  .image-wrapper {
+    grid-area: image;
+  }
 
-      padding: 12px 24px;
+  .name-wrapper {
+    grid-area: name;
 
-      background-color: ${({ theme }) => theme.COLORS.DARK_900};
+    flex-wrap: wrap;
+  }
 
-      border: none;
-      border-radius: 5px;
+  .category-wrapper {
+    grid-area: category;
 
-      button{
-        font-size: 14px;
-      }
-    }
 
-    .name-wrapper {
-      flex: 1;
-    }
-
-    .category-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-
-      padding: 12px 14px;
-
-      border-radius: 5px; 
-    }
-
-    .category-wrapper p {
+    p {
       font-size: 16px;
       color: ${({ theme }) => theme.COLORS.LIGHT_100};
     }
 
-    .category-wrapper select {
-      display: flex;
-      gap: 8px;
+    select {
+      width: 100%;
 
       padding: 14px 18px;
 
@@ -115,69 +88,68 @@ export const Content = styled.div`
       cursor: pointer;
       font-size: 16px;
     }
-
-    .category-wrapper select:hover {
-      background-color: ${({ theme }) => theme.COLORS.DARK_800};
-    }
-  }
-
-  .ingredients-price {
-    display: flex;
-    align-items: center;
-    gap: 32px;
   }
 
   .ingredients-wrapper {
-    flex: 1;
+    grid-area: ingredients;
 
     .insert-ingredients {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      gap: 12px;
       flex-wrap: wrap;
 
-      max-width: 1460px;
+      background-color: ${({ theme }) => theme.COLORS.DARK_900};
 
       border: none;
       border-radius: 5px;
 
-      padding: 8px;
-
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 12px;
-
-      background-color: ${({ theme }) => theme.COLORS.DARK_900}
+      padding: 6px 12px;
     }
   }
 
   .price-wrapper {
-    max-width: 240px;
+    grid-area: price;
   }
 
-  .description-details {
-    .description {
-      min-height: 220px;
-      max-height: 240px;
-      overflow-y: scroll;
+  .description-wrapper {
+    grid-area: description;
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .image-wrapper, .name-wrapper, .category-wrapper, .ingredients-wrapper, .price-wrapper, .description-wrapper {
+      width: 100%;
     }
   }
+`
 
-  .dish-details p, .ingredients-price p, .description-details p {
-    margin: 32px 0 14px 0;
-  }
-
-  .button-wrapper {
-    margin-top: 32px;
-
+export const Image = styled.div`
+  .upload-button {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 8px;
 
-    button {
-      max-width: 210px;
-    }
+    max-width: 320px;
 
-    .delete-dish {
-      background-color: ${({ theme }) => theme.COLORS.DARK_900};
-    }
+    padding: 14px 16px;
+
+    background-color: ${({ theme }) => theme.COLORS.DARK_900};
+
+    border-radius: 5px;
+
+    cursor: pointer;
+  }
+
+  .upload-button:hover {
+    background-color: ${({ theme }) => theme.COLORS.DARK_800};
+  }
+
+  .image-upload input {
+    display: none;
   }
 `

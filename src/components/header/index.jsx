@@ -1,5 +1,7 @@
 import { Container, ProfileView } from "./styles";
 
+import avatarPlaceholder from "../../assets/avatar_placeholder.svg"
+
 import { FiMenu } from "react-icons/fi";
 
 import { useAuth } from "../../hooks/auth";
@@ -9,7 +11,7 @@ import { api } from "../../services/api";
 export function Header({ onMenuToggle }) { 
   
   const { user } = useAuth();
-  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : "";
+  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
 
   return (
     <Container>

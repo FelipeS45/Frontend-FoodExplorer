@@ -64,7 +64,7 @@ export function SignIn() {
 
         </div>
 
-        <Button title = "Entrar" onClick = {handleSignIn}/>
+        <Button title = "Entrar" onClick = {handleSignIn} className = "signin"/>
 
         <Link to = "/register">Criar conta</Link>
 
