@@ -50,6 +50,10 @@ export const Form = styled.form`
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    .signout {
+      margin-top: 48px;
+    }
   }
 
   .inputs-wrapper {

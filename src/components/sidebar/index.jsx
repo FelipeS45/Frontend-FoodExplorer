@@ -1,42 +1,21 @@
 import { Container, Header, NewDishButton } from "./styles";
-
 import { Input } from "../input";
-import { ButtonText } from "../buttonText";
-
 import { FiSearch } from "react-icons/fi";
-
-import { useState, useEffect } from "react";
+import { USER_ROLE } from "../../utils";
+import { useAuth } from "../../hooks/auth";
+import { useState } from "react";
 
 export function SideBar({ menuIsOpen, onCloseMenu, onSearch }) {
-  
-  const [search, setSearchInput] = useState("");
+  const [search, setSearchInput] = useState("")
 
-  const [ingredients, setIngredients] = useState([])
-  const [ingredientsSelected, setIngredientsSelected] = useState([])
+  const {user} = useAuth()
 
   const handleSearchChange = (ev) => {
-    const newValue = ev.target.value;
-    setSearchInput(newValue);
-    onSearch(newValue); 
+    const newValue = ev.target.value
+    
+    setSearchInput(newValue)
+    onSearch(newValue) 
   }
-
-  function handleIngredientSelected(ingredientName) {
-
-    if(ingredientName === "all") {
-      return setIngredientsSelected([])
-    }
-
-    const alreadySelected = ingredientsSelected.includes(ingredientName)
-
-    if(alreadySelected) {
-      const filteredIngredients = ingredientsSelected.filter(ingredient => ingredient !== ingredientName)
-      setIngredientsSelected(filteredIngredients)
-
-    } else {
-      setIngredientsSelected(prevState => [...prevState, ingredientName])
-    }
-  }
-
 
   return (
     <Container data-menu-is-open={menuIsOpen}>
@@ -53,33 +32,33 @@ export function SideBar({ menuIsOpen, onCloseMenu, onSearch }) {
         </div>
 
         {
-          menuIsOpen && 
-          (      
-            <NewDishButton to = "/newdish">Novo prato</NewDishButton>  
+
+          menuIsOpen && USER_ROLE.ADMIN.includes(user.role) && 
+          (
+            <NewDishButton to="/newdish">Novo prato</NewDishButton>
           )
+
         }
 
         {
-          menuIsOpen && 
-            (
-              (
-                <div className="input-wrapper">
-                  <Input
-                    placeholder="Busque por pratos"
-                    type="text"
-                    icon={FiSearch}
-                    value={search}
-                    onChange={handleSearchChange}
-                  />
-                </div>
-  
-              )
 
-            )
+          menuIsOpen && 
+          (
+            <div className="input-wrapper">
+              <Input
+                placeholder="Busque por pratos ou ingredientes"
+                type="text"
+                icon={FiSearch}
+                value={search}
+                onChange={handleSearchChange}
+              />
+            </div>
+          )
+
         }
 
       </Header>
-
+      
     </Container>
   );
 }

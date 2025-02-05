@@ -4,6 +4,9 @@ import { Button } from "../button";
 
 import Logo from "../../assets/Polygon1.png";
 
+import { useAuth } from "../../hooks/auth";
+import { USER_ROLE } from "../../utils"
+
 import { FiHeart, FiMinus, FiPlus } from "react-icons/fi";
 import { TfiPencil } from "react-icons/tfi";
 
@@ -13,7 +16,9 @@ import { api } from "../../services/api";
 
 export function Card({ data, onAdd, ...rest }) {
   const [quantity, setQuantity] = useState(1)
-  const [isFavorite, setIsFavorite] = useState(false); // Estado para controlar o coração
+  const [isFavorite, setIsFavorite] = useState(false)
+
+  const {user} = useAuth()
 
   const dishImageURL = data.image ? `${api.defaults.baseURL}/files/${data.image}` : Logo
 
@@ -43,18 +48,30 @@ export function Card({ data, onAdd, ...rest }) {
           <img src={dishImageURL} alt="Imagem do prato" />
         </DishView>
 
-        <div className="favorites-wrapper">
-          <button onClick = {toggleFavorite}>
-            <FiHeart
-              color={isFavorite ? "#AB222E" : ""} 
-              fill={isFavorite ? "#AB222E" : ""}
-            />
-          </button>
-        </div>
+        {
+          USER_ROLE.CUSTOMER.includes(user.role) &&
 
-        <div className="edit-wrapper">
-          <ButtonToEditDish to={`/editdish/${data.id}`}><TfiPencil /></ButtonToEditDish>
-        </div>
+          <div className="favorites-wrapper">
+            <button onClick = {toggleFavorite}>
+              <FiHeart
+                color={isFavorite ? "#AB222E" : ""} 
+                fill={isFavorite ? "#AB222E" : ""}
+              />
+            </button>
+          </div>
+
+        }
+
+        
+
+        {
+          USER_ROLE.ADMIN.includes(user.role) &&
+
+          <div className="edit-wrapper">
+            <ButtonToEditDish to={`/editdish/${data.id}`}><TfiPencil /></ButtonToEditDish>
+          </div>
+
+        }
 
       </div>
 
@@ -68,23 +85,33 @@ export function Card({ data, onAdd, ...rest }) {
 
       <div className="footer-wrapper">
 
-        <div className="quantity-control">
+        {
+          USER_ROLE.CUSTOMER.includes(user.role) &&
 
-          <button onClick={decreaseQuantity} disabled={quantity === 1}>
-            <FiMinus />
-          </button>
+          <div className="quantity-control">
 
-          <span>{String(quantity).padStart(2, "0")}</span>
+            <button onClick={decreaseQuantity} disabled={quantity === 1}>
+              <FiMinus />
+            </button>
 
-          <button onClick={increaseQuantity} disabled={quantity === 10}>
-            <FiPlus />
-          </button>
+            <span>{String(quantity).padStart(2, "0")}</span>
 
-        </div>
+            <button onClick={increaseQuantity} disabled={quantity === 10}>
+              <FiPlus />
+            </button>
 
-        <div className="button">
-          <Button title="Adicionar" onClick={handleAdd} />
-        </div>
+          </div>
+
+        }
+
+        {
+          USER_ROLE.CUSTOMER.includes(user.role) &&
+
+          <div className="button">
+            <Button title="Adicionar" onClick={handleAdd} />
+          </div>
+
+        }
 
       </div>
 

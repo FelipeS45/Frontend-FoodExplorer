@@ -138,7 +138,7 @@ export function Profile(){
           <div className="buttons-wrapper">
 
             <Button title = "Salvar" onClick = {handleUpdate}/>
-            <Button title = "Sair" onClick = {handleSignOut}/>
+            <Button title = "Sair da conta" className = "signout" onClick = {handleSignOut}/>
 
           </div>
 

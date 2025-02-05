@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
-  min-height: 452px;
+  min-height: 476px;
   width: 304px;
 
   padding: 24px;
@@ -58,8 +58,6 @@ export const Container = styled.div`
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-
-    margin-top: 24px;
   }  
 
   .quantity-control {

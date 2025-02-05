@@ -9,37 +9,38 @@ import background from "../../assets/Background.png";
 
 import { useAuth } from "../../hooks/auth";
 import { api } from "../../services/api";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 
 export function Home() {
-  
-  const { user } = useAuth();
+  const {user} = useAuth();
+
   const [dishes, setDishes] = useState([]);
   const [search, setSearch] = useState("");
-  const [cart, setCart] = useState([]);
-  const [menuIsOpen, setMenuIsOpen] = useState(false); 
-
-  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : "";
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
 
   useEffect(() => {
     async function fetchDishes() {
-      const response = await api.get(`/dishes?name=${search}`);
-      setDishes(response.data);
+      try {
+        const response = await api.get(`/dishes?search=${search}`)
+        setDishes(response.data)
+      } catch (error) {
+        console.error("Erro ao buscar pratos:", error)
+      }
     }
 
-    fetchDishes();
-  }, [search]);
+    fetchDishes()
+  }, [search])
 
   return (
-
     <Container menuIsOpen={menuIsOpen}>
 
       <SideBar menuIsOpen={menuIsOpen} onCloseMenu={() => setMenuIsOpen(false)} onSearch={setSearch}/>
 
-      <Header onMenuToggle={() => setMenuIsOpen(prev => !prev)} /> 
+      <Header onMenuToggle={() => setMenuIsOpen((prev) => !prev)}/>
 
       <div className="banner-wrapper">
 
@@ -55,7 +56,6 @@ export function Home() {
           </div>
 
         </Banner>
-
       </div>
 
       <Content>
@@ -65,42 +65,48 @@ export function Home() {
           <p className="section-dishes">Pratos</p>
 
           <Swiper modules={[Navigation]} navigation spaceBetween={32} slidesPerView={"auto"}>
-
-            {dishes
+            
+            {
+              dishes
               .filter((dish) => dish.category === "dishes")
               .map((dish, index) => (
                 <SwiperSlide key={index} style={{ width: "auto" }}>
                   <Card data={dish} />
                 </SwiperSlide>
-              ))}
+              ))
+            }
 
           </Swiper>
 
           <p className="section-desserts">Sobremesas</p>
 
           <Swiper modules={[Navigation]} navigation spaceBetween={32} slidesPerView={"auto"}>
-
-            {dishes
+            
+            {
+              dishes
               .filter((dish) => dish.category === "dessert")
               .map((dish, index) => (
                 <SwiperSlide key={index} style={{ width: "auto" }}>
                   <Card data={dish} />
                 </SwiperSlide>
-              ))}
+              ))
+            }
 
           </Swiper>
 
           <p className="section-drinks">Bebidas</p>
 
           <Swiper modules={[Navigation]} navigation spaceBetween={32} slidesPerView={"auto"}>
-
-            {dishes
+            
+            {
+              dishes
               .filter((dish) => dish.category === "drinks")
               .map((dish, index) => (
                 <SwiperSlide key={index} style={{ width: "auto" }}>
                   <Card data={dish} />
                 </SwiperSlide>
-              ))}
+              ))
+            }
 
           </Swiper>
 
@@ -109,7 +115,7 @@ export function Home() {
       </Content>
 
       <Footer />
-
+      
     </Container>
   );
 }

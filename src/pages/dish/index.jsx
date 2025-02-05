@@ -11,6 +11,9 @@ import { FiArrowLeft, FiMinus, FiPlus } from "react-icons/fi";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
+import { USER_ROLE } from "../../utils";
+import { useAuth } from "../../hooks/auth";
+
 import { api } from "../../services/api";
 
 export function Dish() {
@@ -19,7 +22,9 @@ export function Dish() {
   const navigate = useNavigate()
 
   const [data, setData] = useState(null)
-  const [quantity, setQuantity] = useState(1) // Estado para a quantidade
+  const [quantity, setQuantity] = useState(1) 
+
+  const {user} = useAuth()
 
   useEffect(() => {
     async function fetchDish() {
@@ -37,6 +42,13 @@ export function Dish() {
 
   function editDish() {
     navigate(`/editdish/${data.id}`)
+  }
+
+  function decreaseQuantity() {
+    setQuantity((prevQuantity) => Math.max(1, prevQuantity - 1));
+  }
+  function increaseQuantity() {
+    setQuantity((prevQuantity) => Math.min(10, prevQuantity + 1));
   }
 
   function handleBack() {
@@ -83,9 +95,42 @@ export function Dish() {
 
               <div className="interactions-wrapper">
 
-                <div className="admin-only">
-                  <Button title="Editar prato" onClick={editDish} />
-                </div>
+                {
+                  USER_ROLE.ADMIN.includes(user.role) &&
+
+                  <div className="admin-only">
+                    <Button title="Editar prato" onClick={editDish} />
+                  </div>
+
+                }
+
+                {
+                  USER_ROLE.CUSTOMER.includes(user.role) &&
+
+                  <div className="quantity-control">
+
+                    <button onClick={decreaseQuantity} disabled={quantity === 1}>
+                      <FiMinus />
+                    </button>
+
+                    <span>{String(quantity).padStart(2, "0")}</span>
+
+                    <button onClick={increaseQuantity} disabled={quantity === 10}>
+                      <FiPlus />
+                    </button>
+
+                  </div>
+
+                }
+
+                {
+                  USER_ROLE.CUSTOMER.includes(user.role) &&
+
+                  <div className="button">
+                    <Button title="Adicionar" className = "add-dish"/>
+                  </div>
+
+                }
 
               </div>
 

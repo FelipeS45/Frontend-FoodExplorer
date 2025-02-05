@@ -5,8 +5,9 @@ import { Dish } from "../pages/dish";
 import { EditDish } from "../pages/editDish";
 import { NewDish } from "../pages/newDish";
 import { Profile } from "../pages/profile";
+import { NotFound } from "../pages/notFound";
 
-export function AppRoutes() {
+export function AdminRoutes() {
 
   return(
     <Routes>
@@ -16,6 +17,8 @@ export function AppRoutes() {
       <Route path = "/newdish" element = {<NewDish/>}/>
       <Route path = "/dish/:id" element = {<Dish/>}/>
       <Route path = "/profile" element = {<Profile/>}/>
+
+      <Route path = "*" exact = {true} element = {<NotFound/>}/>
       
     </Routes>
   )
