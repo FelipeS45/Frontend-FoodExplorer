@@ -16,11 +16,11 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 
 export function Home() {
-  const {user} = useAuth();
+  const {user} = useAuth()
 
-  const [dishes, setDishes] = useState([]);
-  const [search, setSearch] = useState("");
-  const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [dishes, setDishes] = useState([])
+  const [search, setSearch] = useState("")
+  const [menuIsOpen, setMenuIsOpen] = useState(false)
 
   useEffect(() => {
     async function fetchDishes() {
@@ -115,7 +115,7 @@ export function Home() {
       </Content>
 
       <Footer />
-      
+
     </Container>
-  );
+  )
 }

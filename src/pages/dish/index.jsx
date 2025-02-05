@@ -11,7 +11,7 @@ import { FiArrowLeft, FiMinus, FiPlus } from "react-icons/fi";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { USER_ROLE } from "../../utils";
+import { USER_ROLE } from "../../utils/utils";
 import { useAuth } from "../../hooks/auth";
 
 import { api } from "../../services/api";

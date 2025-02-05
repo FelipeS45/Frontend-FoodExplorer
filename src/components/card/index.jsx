@@ -5,7 +5,7 @@ import { Button } from "../button";
 import Logo from "../../assets/Polygon1.png";
 
 import { useAuth } from "../../hooks/auth";
-import { USER_ROLE } from "../../utils"
+import { USER_ROLE } from "../../utils/utils"
 
 import { FiHeart, FiMinus, FiPlus } from "react-icons/fi";
 import { TfiPencil } from "react-icons/tfi";

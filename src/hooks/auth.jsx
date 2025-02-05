@@ -1,7 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
-import { useNavigate } from "react-router-dom";
-
 import { api } from "../services/api";
 
 export const AuthContext = createContext({})
@@ -13,23 +11,25 @@ function AuthProvider({children}){
   async function signIn({email, password}) { // {} - quero o email e a senha dentro do objeto independente da posição em que ele está (podem ser informados em qualquer ordem)
     
     try{
-      const response = await api.post("/sessions", {email, password})
-      const {user, token} = response.data
+      const response = await api.post(
+        "/sessions", 
+        {email, password}, 
+        {withCredentials: true}
+      )
+
+      const {user} = response.data
 
       localStorage.setItem("@foodexplorer: user", JSON.stringify(user))
-      localStorage.setItem("@foodexplorer: token", token)
 
-      api.defaults.headers.common['Authorization'] = `Bearer ${token}`
+      setData({user})
 
-      setData({user, token})
+    } catch(error) {
 
-    } catch(error){
-
-      if(error.response){
+      if(error.response) {
         alert(error.response.data.message)
       }
 
-      else{
+      else {
         alert("Não foi possível entrar!")
       }
     }
@@ -37,7 +37,6 @@ function AuthProvider({children}){
 
   function signOut(){ // remover as informações do usuário armazenadas no localStorage
     localStorage.removeItem("@foodexplorer: user")
-    localStorage.removeItem("@foodexplorer: token")
 
     setData({})
   }
@@ -76,17 +75,13 @@ function AuthProvider({children}){
 
   useEffect(() => { // dizer ao React o que deve ser feito depois da renderização (renderização -> atualizar a DOM)
     const user = localStorage.getItem("@foodexplorer: user")
-    const token = localStorage.getItem("@foodexplorer: token")
 
-    if(token && user){
-      api.defaults.headers.common['Authorization'] = `Bearer ${token}`
+    if(user){
 
       setData({
-        token,
         user: JSON.parse(user)
       })
     }
-
   }, []) // toda vez que o atributo que estiver dentro de [] é atualizado, o useEffect é chamado
   
   return(
