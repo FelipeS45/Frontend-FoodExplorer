@@ -1,6 +1,15 @@
-import styled from "styled-components";
+import { styled, keyframes } from "styled-components";
 
 import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
+
+const appear = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 
 export const Container = styled.div`
   display: flex;
@@ -9,11 +18,13 @@ export const Container = styled.div`
   align-items: center;
 
   height: 100vh;
-  max-width: 132rem;
+  max-width: 1320px;
 
   margin: auto;
 
-  padding: 10rem;
+  padding: 100px;
+
+  animation: ${appear} 1s ease-out;
 
   @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
     padding: 5rem;

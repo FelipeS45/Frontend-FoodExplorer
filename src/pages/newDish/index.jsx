@@ -10,15 +10,12 @@ import { Button } from "../../components/button";
 
 import { FiArrowLeft, FiUpload } from "react-icons/fi";
 
-import { useAuth } from "../../hooks/auth"
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { api } from "../../services/api";
 
 export function NewDish() {
-
   const [image, setImage] = useState(null)
   const [name, setName] = useState("")
   const [category, setCategory] = useState("")

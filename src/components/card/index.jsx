@@ -52,12 +52,14 @@ export function Card({ data, onAdd, ...rest }) {
           USER_ROLE.CUSTOMER.includes(user.role) &&
 
           <div className="favorites-wrapper">
+
             <button onClick = {toggleFavorite}>
               <FiHeart
                 color={isFavorite ? "#AB222E" : ""} 
                 fill={isFavorite ? "#AB222E" : ""}
               />
             </button>
+            
           </div>
 
         }

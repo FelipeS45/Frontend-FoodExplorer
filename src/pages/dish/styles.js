@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
-export const Container = styled.div`
-`
+export const Container = styled.div``;
 
 export const Main = styled.div`
   padding: 121px;
@@ -33,11 +32,11 @@ export const Main = styled.div`
       flex-direction: column;
     }
   }
-`
+`;
 
 export const BackToHome = styled(Link)`
   color: ${({ theme }) => theme.COLORS.LIGHT_100};
-`
+`;
 
 export const Content = styled.div`
   margin-top: 96px;
@@ -110,4 +109,4 @@ export const Content = styled.div`
     display: flex;
     align-items: center;
   }
-`
+`;

@@ -14,10 +14,9 @@ import { useAuth } from "../../hooks/auth";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { api } from "../../services/api"
+import { api } from "../../services/api";
 
 export function Profile(){
-
   const {user, updateProfile, signOut} = useAuth()
 
   const [name, setName] = useState(user.name)

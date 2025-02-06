@@ -9,8 +9,7 @@ export const Container = styled.div`
     "sidebar header"
     "sidebar banner"
     "sidebar content"
-    "sidebar footer"
-  ;
+    "sidebar footer";
 
   max-width: 100vw;
   height: 100vh;
@@ -118,6 +117,26 @@ export const Banner = styled.div`
       height: 360px;
 
       margin-left: -16px;
+      margin-top: -79px;
+    }
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    .title-wrapper {
+        h1 {
+        font-size: 36px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 335px;
+
+      margin-left: -96px;
       margin-top: -79px;
     }
   }

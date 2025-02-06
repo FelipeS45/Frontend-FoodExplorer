@@ -7,7 +7,6 @@ import { Card } from "../../components/card";
 import { SideBar } from "../../components/sidebar";
 import background from "../../assets/Background.png";
 
-import { useAuth } from "../../hooks/auth";
 import { api } from "../../services/api";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -16,8 +15,6 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 
 export function Home() {
-  const {user} = useAuth()
-
   const [dishes, setDishes] = useState([])
   const [search, setSearch] = useState("")
   const [menuIsOpen, setMenuIsOpen] = useState(false)
@@ -27,6 +24,7 @@ export function Home() {
       try {
         const response = await api.get(`/dishes?search=${search}`)
         setDishes(response.data)
+
       } catch (error) {
         console.error("Erro ao buscar pratos:", error)
       }

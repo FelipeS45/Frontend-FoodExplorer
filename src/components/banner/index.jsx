@@ -1,6 +1,6 @@
-import { Container } from "./styles"
+import { Container } from "./styles";
 
-import background from "../../assets/Background.png"
+import background from "../../assets/Background.png";
 
 export function Banner() {
 

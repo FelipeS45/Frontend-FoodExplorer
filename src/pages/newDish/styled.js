@@ -7,7 +7,7 @@ export const Container = styled.div`
   min-width: 320px;
   height: 100vh;   
   min-height: 100%;
-`
+`;
 
 export const Main = styled.div`
   padding: 48px 121px 0 121px;
@@ -35,7 +35,7 @@ export const Main = styled.div`
       width: 100%;
     }
   }
-`
+`;
 
 export const Form = styled.div`
   display: grid;
@@ -126,7 +126,7 @@ export const Form = styled.div`
       width: 100%;
     }
   }
-`
+`;
 
 export const Image = styled.div`
   .upload-button {
@@ -152,4 +152,4 @@ export const Image = styled.div`
   .image-upload input {
     display: none;
   }
-`
+`;

@@ -65,5 +65,5 @@ export function SideBar({ menuIsOpen, onCloseMenu, onSearch }) {
       </Header>
       
     </Container>
-  );
+  )
 }

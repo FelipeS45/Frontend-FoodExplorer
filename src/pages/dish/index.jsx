@@ -31,11 +31,13 @@ export function Dish() {
       try {
         const response = await api.get(`/dishes/${params.id}`)
         setData(response.data)
+
       } catch (error) {
         console.error("Erro ao buscar prato:", error)
       }
     }
-    fetchDish();
+
+    fetchDish()
   }, [params.id])
 
   const dishImageURL = data ? `${api.defaults.baseURL}/files/${data.image}` : ""
@@ -45,10 +47,10 @@ export function Dish() {
   }
 
   function decreaseQuantity() {
-    setQuantity((prevQuantity) => Math.max(1, prevQuantity - 1));
+    setQuantity((prevQuantity) => Math.max(1, prevQuantity - 1))
   }
   function increaseQuantity() {
-    setQuantity((prevQuantity) => Math.min(10, prevQuantity + 1));
+    setQuantity((prevQuantity) => Math.min(10, prevQuantity + 1))
   }
 
   function handleBack() {
@@ -145,5 +147,5 @@ export function Dish() {
       <Footer />
       
     </Container>
-  );
+  )
 }

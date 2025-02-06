@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Container = styled.div`
   width: fit-content;
@@ -8,4 +8,4 @@ export const Container = styled.div`
 
   border: none;
   border-radius: 5px;
-`
+`;

@@ -99,12 +99,12 @@ export const Container = styled.div`
       }
     }
   }
-`
+`;
 
-export const DishView = styled(Link)``
+export const DishView = styled(Link)``;
 
 export const ButtonToEditDish = styled(Link)`
   font-size: 28px;
   color: ${({theme}) => theme.COLORS.LIGHT_400};
-`
+`;
 

@@ -1,8 +1,17 @@
-import styled from 'styled-components';
+import { styled, keyframes } from "styled-components";
 
 import { Link } from 'react-router-dom';
 
 import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
+
+const appear = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 
 export const Container = styled.div`
   grid-area: header;
@@ -23,6 +32,22 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     gap: 14px;
+
+    animation: ${appear} 2s ease-out;
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .admin-user {
+      position: absolute;
+      bottom: -8px; 
+      right: 0; 
+      font-size: 12px;
+      color: ${({theme}) => theme.COLORS.BLUE_200};
+    }
   }
 
   svg {
@@ -54,7 +79,7 @@ export const Container = styled.div`
     align-items: center;
     gap: 2px;
   }
-`
+`;
 
 export const ProfileView = styled(Link)`
   display: flex;
@@ -65,4 +90,4 @@ export const ProfileView = styled(Link)`
     height: 55px;
     border-radius: 50%;
   }
-`
+`;

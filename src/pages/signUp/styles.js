@@ -1,6 +1,15 @@
-import styled from "styled-components";
+import { styled, keyframes } from "styled-components";
 
 import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
+
+const appear = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 
 export const Container = styled.div`
   display: flex;
@@ -9,10 +18,12 @@ export const Container = styled.div`
   align-items: center;
 
   height: 100vh;
-  max-width: 132rem;
+  max-width: 1320px;
   
   margin: auto;
-  padding: 10rem;
+  padding: 100px;
+
+  animation: ${appear} 1s ease-out;
 
   @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
     padding: 5rem;
@@ -21,7 +32,7 @@ export const Container = styled.div`
     padding: 3rem;
     justify-content: center;
   }
-`
+`;
 
 export const Logo = styled.div`
 
@@ -42,7 +53,7 @@ export const Logo = styled.div`
       width: 3.5rem;
     }
   }
-`
+`;
 
 export const Form = styled.form`
   display: flex;
@@ -88,4 +99,4 @@ export const Form = styled.form`
   @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
     padding: 3rem;
   }
-`
+`;

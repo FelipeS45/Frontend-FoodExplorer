@@ -111,7 +111,7 @@ export function EditDish() {
       setIngredients(ingredients.map(ingredient => ingredient.name))
     }
   
-    fetchDish();
+    fetchDish()
   }, [])
 
   function handleBack() {

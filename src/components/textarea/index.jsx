@@ -5,5 +5,5 @@ export function TextArea({ content, ...rest }) {
         <Container {...rest}>
             {content}
         </Container>
-    );
+    )
 }
